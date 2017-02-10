@@ -5,15 +5,19 @@ body {
 }
 
 .gameBoard{
-/*with:100px;
-height:100px;*/
-background-color: light-gray;
+	width: inherit;
+	/*width:400px;
+	/*height:100px;*/
+	display: inline-block;
+	background-color: light-gray;
+	padding-left:40px;
+	padding-right:40px;
 }
 
 .gameBoard td {
-width: 40px;
-height:40px;
-background-color:blue;
+	width: 40px;
+	height:40px;
+	background-color:blue;
 }
 
 table, th, td {
@@ -21,7 +25,11 @@ table, th, td {
 }
 
 #MyBoard .ship{
-background-color: orange;
+	background-color: orange;
+}
+
+#TheirBoard{
+	float: right;
 }
 
 /*
