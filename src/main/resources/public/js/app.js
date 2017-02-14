@@ -8,6 +8,13 @@ $( document ).ready(function() {
    });
 });
 
+function blink() {
+   var f = document.getElementById('blink');
+    setInterval(function() {
+        f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
+    }, 1000);
+}
+
 function placeShip() {
    console.log($( "#shipSelec" ).val());
    console.log($( "#rowSelec" ).val());
