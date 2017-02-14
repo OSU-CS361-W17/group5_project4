@@ -1,11 +1,10 @@
 html,
 body {
+    min-width: 1250px;
     margin: 0;
     padding: 0;
-}
-
-html{
-    min-width: 1250px;
+	background-image: url("light_water-tile_300x300.jpg");
+    background-repeat: repeat;
 }
 
 .gameBoard{
@@ -27,14 +26,44 @@ html{
 table, th, td {
    border: 1px solid black;
 }
-
-#MyBoard .ship{
-	background-color: orange;
+div .ShipTable{
+	display: inline-block;
+	border: none;
+	margin: 10px;
+}
+div .ShipTable > .Ship{
+	display: inline-block;
+	background-color: gray;
+	border-radius: 10px;
+	width: 20px;
+	height: 20px;
+	margin: 4px 10px;
+	padding:10px;
+	font-family:arial;
+	color: white;
+}
+#MyBoard{
+	float:left;
+}
+.Terminal{
+	padding:10px;
+	border-radius: 10px;
+	background-color:black;
+	display:inline-block;
+	margin-top:80px;
+	width:29%;
+	height:400px;
+	color:lightgreen;
+}
+.Terminal p{
+	color:lightgreen;
+	margin:0;
 }
 
 #TheirBoard{
 	float: right;
 }
+
 
 header{
     background-color: black;
@@ -116,6 +145,43 @@ p #1:hover .coord{
 .1-1:hover .coord{
     display: initial;
 }
+
+div #AircraftcarrierDiv {
+    width: 600px;
+    overflow-x: visible;
+}
+div #AircraftcarrierDiv p {
+	font-size:18px;
+    margin-bottom:4px;
+}
+
+div .ShipTable > #AircraftCarrier {
+	width: 200px;
+}
+
+div .ShipTable > #BattleShip {
+	width: 160px;
+}
+
+div .ShipTable > #Submarine {
+	width: 120px;
+}
+
+div .ShipTable > #Destroyer {
+	width: 120px;
+}
+
+div .ShipTable > #Cruiser {
+	width: 80px;
+}
+
+
+#MyBoard .ship{
+	background-color: orange;
+}
+
+
+
 
 /*
 button {
