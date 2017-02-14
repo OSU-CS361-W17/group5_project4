@@ -16,12 +16,17 @@ body {
 	padding-right:40px;
 }
 
-.gameBoard td {
+.gameBoard td{
 	width: 40px;
 	height:40px;
+	/*background-color:black;*/
+}
+#MyBoard.gameBoard td{
 	background-color:blue;
 }
-
+#TheirBoard.gameBoard td{
+	background-color:red;
+}
 table, th, td {
    border: 1px solid black;
 }
@@ -43,14 +48,16 @@ div .ShipTable > .Ship{
 }
 #MyBoard{
 	float:left;
+	background-color:white;
 }
+
 .Terminal{
 	padding:10px;
 	border-radius: 10px;
 	background-color:black;
 	display:inline-block;
 	margin-top:80px;
-	width:29%;
+	width:19%;
 	height:400px;
 	color:lightgreen;
 }
@@ -61,6 +68,8 @@ div .ShipTable > .Ship{
 
 #TheirBoard{
 	float: right;
+	position: relative;
+	bottom: 500px;
 }
 
 div #AircraftcarrierDiv {

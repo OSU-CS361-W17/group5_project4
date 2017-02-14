@@ -13,7 +13,12 @@
 <section id="todoapp" ic-target="this">
     <!--#parse("/velocity/todoList.vm")-->
     <div id="MyBoard" class="gameBoard">
-    <h1>Yours</h1>
+	<style>
+	h1 {color: blue;}
+	h1 {font-family: courier;}
+	h1 {font-size: 35px;}
+	</style>
+    <h1>Your Fleet</h1>
         <table>
             <tr id="My_Row_1">
                 <td id="1_1"  class="{{1_1}}"></td>
@@ -187,6 +192,12 @@
 			<div class="Ship" id="Submarine">Submarine</div>
 			<div class="Ship" id="Destroyer">Destroyer</div>
 			<div class="Ship" id="Cruiser">Cruiser</div>
+			
+			<!--<div class="Ship" id="AircraftCarrier"><img HEIGHT="10" WIDTH="10" src ="Aircraft Carrier.PNG">AircraftCarrier</div>
+			<div class="Ship" id="BattleShip"><img HEIGHT="10" WIDTH="10" src ="battleship.PNG">BattleShip</div>
+			<div class="Ship" id="Submarine"><img HEIGHT="10" WIDTH="10" src ="Submarine.PNG">Submarine</div>
+			<div class="Ship" id="Destroyer"><img HEIGHT="10" WIDTH="10" src ="Destroyer.PNG">Destroyer</div>
+			<div class="Ship" id="Cruiser"><img HEIGHT="10" WIDTH="10" src ="Small ship.PNG"><Cruiser</div>-->
 		</div>
     </div>
     <!--<BR><BR><BR>-->
@@ -196,7 +207,12 @@
 	</div>
 	
     <div id="TheirBoard" class="gameBoard">
-    <H1>Theirs</H1>
+	<style>
+	h2 {color: red;}
+	h2 {font-family: courier;}
+	h2 {font-size: 35px;}
+	</style>
+    <H2>Enemy Fleet</H2>
         <table>
             <tr id="My_Row_1">
                 <td id="1_1"  class="{{1_1}}"></td>
