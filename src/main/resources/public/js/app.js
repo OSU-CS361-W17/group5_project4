@@ -75,6 +75,11 @@ function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "blue");
 
+if(gameModel.scanResult){
+alert("Scan found at least one Ship")}
+else{
+alert("Scan found no Ships")}
+
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
 displayShip(gameModel.cruiser);
