@@ -451,6 +451,13 @@ footer:before {
 
     #filters {
         bottom: 10px;
-    }
 }
-*/
+
+html,
+body {
+    min-width: 1250px;
+    margin: 0;
+    padding: 0;
+	background-image: url("light_water-tile_300x300.jpg");
+    background-repeat: repeat;
+}*/

@@ -1,3 +1,4 @@
+
 var gameModel;
 
 $( document ).ready(function() {
@@ -149,7 +150,6 @@ function displayShip(ship){
         }
     }
  }
-
 
 
 }
