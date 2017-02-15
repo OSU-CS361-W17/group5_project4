@@ -1,3 +1,4 @@
+
 var gameModel;
 
 $( document ).ready(function() {
@@ -7,6 +8,13 @@ $( document ).ready(function() {
     console.log( "JSON Data: " + json );
    });
 });
+
+function blink() {
+   var f = document.getElementById('blink');
+    setInterval(function() {
+        f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
+    }, 1000);
+}
 
 function placeShip() {
    console.log($( "#shipSelec" ).val());
@@ -35,12 +43,14 @@ function placeShip() {
 }
 
 
+
+
 function fire(){
- console.log($( "#rowFire" ).val());
  console.log($( "#colFire" ).val());
+   console.log($( "#rowFire" ).val());
 //var menuId = $( "ul.nav" ).first().attr( "id" );
    var request = $.ajax({
-     url: "/fire/"+$( "#rowFire" ).val()+"/"+$( "#colFire" ).val(),
+     url: "/fire/"+$( "#colFire" ).val()+"/"+$( "#rowFire" ).val(),
      method: "post",
      data: JSON.stringify(gameModel),
      contentType: "application/json; charset=utf-8",
@@ -59,6 +69,31 @@ function fire(){
 
 }
 
+function scan(){
+ console.log($( "#colScan" ).val());
+   console.log($( "#rowScan" ).val());
+//var menuId = $( "ul.nav" ).first().attr( "id" );
+   var request = $.ajax({
+     url: "/scan/"+$( "#colScan" ).val()+"/"+$( "#rowScan" ).val(),
+     method: "post",
+     data: JSON.stringify(gameModel),
+     contentType: "application/json; charset=utf-8",
+     dataType: "json"
+   });
+
+   request.done(function( currModel ) {
+     displayGameState(currModel);
+     gameModel = currModel;
+
+   });
+
+   request.fail(function( jqXHR, textStatus ) {
+     alert( "Request failed: " + textStatus );
+   });
+
+}
+
+
 function log(logContents){
     console.log(logContents);
 }
@@ -66,6 +101,11 @@ function log(logContents){
 function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "blue");
+
+if(gameModel.scanResult){
+alert("Scan found at least one Ship")}
+else{
+alert("Scan found no Ships")}
 
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
@@ -110,7 +150,6 @@ function displayShip(ship){
         }
     }
  }
-
 
 
 }
