@@ -15,12 +15,20 @@ body {
 	background-color: light-gray;
 	padding-left:40px;
 	padding-right:40px;
+
 }
 
 .gameBoard td {
 	width: 40px;
 	height:40px;
 	background-color:blue;
+}
+
+#TheirBoard td:hover {
+	width: 40px;
+	height:40px;
+	background-color:red;
+	cursor: crosshair;
 }
 
 table, th, td {
@@ -126,24 +134,6 @@ header{
     display: inline-block;
     top: -185px;
     right: -5px;
-}
-
-/*.coord{
-    display: none;
-    cursor: pointer;
-}
-
-p #1:hover .coord{
-    display: initial;
-}*/
-
-.1-1 .coord{
-    display: none;
-    cursor: pointer;
-}
-
-.1-1:hover .coord{
-    display: initial;
 }
 
 div #AircraftcarrierDiv {
