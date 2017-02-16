@@ -6,8 +6,29 @@ body {
 	background-image: url("light_water-tile_300x300.jpg");
     background-repeat: repeat;
 }
-
-.gameBoard{
+h2{
+	font-family: courier;
+	font-size: 35px;
+}
+p{
+	font-family: monospace;
+	font-size: 15px;
+	display: inline;
+}
+h3{
+	font-family: monospace;
+	font-size: 30px;
+	font-weight: bold;
+}
+#firebutton{
+	color: white;
+    background-color: #cc0000;
+    width: 50px;
+    height: 30px;
+	font-size: 20px;
+}
+.gameBoard {
+	width:464px;
 	width: inherit;
 	/*width:400px;
 	/*height:100px;*/
@@ -21,6 +42,33 @@ body {
 .gameBoard td {
 	width: 40px;
 	height:40px;
+}
+h2{
+	font-family: courier;
+	font-size: 35px;
+}
+p{
+	font-family: monospace;
+	font-size: 15px;
+	display: inline;
+}
+h3{
+	font-family: monospace;
+	font-size: 30px;
+	font-weight: bold;
+}
+#firebutton{
+	color: white;
+    background-color: #cc0000;
+    width: 50px;
+    height: 30px;
+	font-size: 20px;
+}
+#MyBoard.gameBoard td{
+	background-color:blue;
+}
+#TheirBoard.gameBoard td{
+	background-color:#1f7a1f;
 	background-color:blue;
 }
 

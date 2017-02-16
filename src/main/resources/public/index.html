@@ -25,12 +25,7 @@
 <section id="todoapp" ic-target="this">
     <!--#parse("/velocity/todoList.vm")-->
     <div id="MyBoard" class="gameBoard">
-	<style>
-	h1 {color: blue;}
-	h1 {font-family: courier;}
-	h1 {font-size: 35px;}
-	</style>
-    <h1>Your Fleet</h1>
+    <h2 style="color:blue">Your Fleet</h2>
         <table style="border:none;">
             <tr id="Row_0">
                 <td align="center" style="background-color:white;border:none;">&nbsp;</td>
@@ -178,9 +173,9 @@
         </table>
 
 		<div id="AircraftcarrierDiv">
-			<p>Place Ships:</p>
+			<h3>Place Ships:</h3>
 			
-			Ship:
+			<p>Ship:</p>
 			<select name="shipSelec" id="shipSelec">
 				<option value="aircraftCarrier">Aircraft Carrier</option>
 				<option value="battleship">Battleship</option>
@@ -188,7 +183,7 @@
 				<option value="destroyer">Destroyer</option>
 				<option value="submarine">Submarine</option>
 			</select>
-			Row:
+			<p>Row:</p>
 			<select name="rowSelec" id="rowSelec">
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -201,7 +196,7 @@
 				<option value="9">9</option>
 				<option value="10">10</option>
 			</select>
-			Column:
+			<p>Column:</p>
 			<select name="colSelec" id="colSelec">
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -214,7 +209,7 @@
 				<option value="9">9</option>
 				<option value="10">10</option>
 			</select>
-			Orientation:
+			<p>Orientation:</p>
 			<select name="orientationSelec" id="orientationSelec">
 				<option value="horizontal">horizontal</option>
 				<option value="vertical">vertical</option>
@@ -256,12 +251,7 @@
                 <td align="center" style="background-color:white;border:none;">I</td>
                 <td align="center" style="background-color:white;border:none;">J</td>
             </tr>
-	<style>
-	h2 {color: red;}
-	h2 {font-family: courier;}
-	h2 {font-size: 35px;}
-	</style>
-    <H2>Enemy Fleet</H2>
+    <H2 style="color:#1f7a1f">Enemy Fleet</H2>
         <table>
             <tr id="My_Row_1">
 		<td align="center" style="background-color:white;border:none;">1</td>
@@ -395,8 +385,8 @@
             </tr>
         </table>
 		<div id="AircraftcarrierDiv">
-			<p>Fire:</p>
-			Row:
+			<h3>Fire:</h3>
+			<p>Row:</p>
 			<select name="rowFire" id="rowFire">
 				<option value="1">1</option>
 				<option value="2">2</option>
@@ -409,7 +399,7 @@
 				<option value="9">9</option>
 				<option value="10">10</option>
 			</select>
-			Column:
+			<p>Column:</p>
 			<select name="colFire" id="colFire">
 				<option value="1">1</option>
 				<option value="2">2</option>
