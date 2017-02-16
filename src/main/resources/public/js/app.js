@@ -6,6 +6,7 @@ $( document ).ready(function() {
   gameModel = json;
     console.log( "JSON Data: " + json );
    });
+   //var tile = getElementsByTagName("TD");
 });
 
 function blink() {
@@ -74,6 +75,11 @@ function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "blue");
 
+if(gameModel.scanResult){
+alert("Scan found at least one Ship")}
+else{
+alert("Scan found no Ships")}
+
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
 displayShip(gameModel.cruiser);
@@ -98,8 +104,6 @@ for (var i = 0; i < gameModel.playerHits.length; i++) {
 
 }
 
-
-
 function displayShip(ship){
  startCoordAcross = ship.start.Across;
  startCoordDown = ship.start.Down;
@@ -117,7 +121,17 @@ function displayShip(ship){
         }
     }
  }
+}
 
 
+//testing to add coordinates clicked to fire selection
+document.addEventListener('click', whereClick);
 
+function whereClick(event){
+    console.log(event.target);
+}
+
+function whereClick(){
+    var tile = document.getElementsByTagName("TD");
+    document.getElementById("demo").innerHTML = tile[1].innerHTML;
 }

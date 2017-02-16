@@ -1,5 +1,6 @@
 html,
 body {
+    min-width: 1250px;
     margin: 0;
     padding: 0;
 	background-image: url("light_water-tile_300x300.jpg");
@@ -28,24 +29,56 @@ h3{
 }
 .gameBoard {
 	width:464px;
+	width: inherit;
 	/*width:400px;
 	/*height:100px;*/
 	display: inline-block;
 	background-color: light-gray;
 	padding-left:40px;
 	padding-right:40px;
+
 }
 
-.gameBoard td{
+.gameBoard td {
 	width: 40px;
 	height:40px;
+}
+h2{
+	font-family: courier;
+	font-size: 35px;
+}
+p{
+	font-family: monospace;
+	font-size: 15px;
+	display: inline;
+}
+h3{
+	font-family: monospace;
+	font-size: 30px;
+	font-weight: bold;
+}
+#firebutton{
+	color: white;
+    background-color: #cc0000;
+    width: 50px;
+    height: 30px;
+	font-size: 20px;
 }
 #MyBoard.gameBoard td{
 	background-color:blue;
 }
 #TheirBoard.gameBoard td{
 	background-color:#1f7a1f;
+	background-color:blue;
 }
+
+#TheirBoard td:hover {
+	width: 40px;
+	height:40px;
+	background-color:red;
+	cursor: crosshair;
+}
+
 table, th, td {
    border: 1px solid black;
 }
@@ -67,16 +100,14 @@ div .ShipTable > .Ship{
 }
 #MyBoard{
 	float:left;
-	background-color:white;
 }
-
 .Terminal{
 	padding:10px;
 	border-radius: 10px;
 	background-color:black;
 	display:inline-block;
 	margin-top:80px;
-	width:19%;
+	width:29%;
 	height:400px;
 	color:lightgreen;
 }
@@ -87,8 +118,70 @@ div .ShipTable > .Ship{
 
 #TheirBoard{
 	float: right;
-	position: relative;
-	bottom: 500px;
+}
+
+
+header{
+    background-color: black;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-color: #676767;
+    border-style: solid;
+    border-width: 15px;
+    height: 140px;
+    min-width: 900px;
+}
+
+.game-title h1{
+    font-family: 'Black Ops One', cursive;
+    font-weight: bold;
+    font-size: 600%;
+    color: #676767;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+#upper-left-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    top: -170px;
+    left: 13px;
+}
+
+#upper-right-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    float: right;
+    display: inline-block;
+    top: -225px;
+    right: -5px;
+}
+
+#lower-left-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    bottom: 128px;
+    left: 13px;
+}
+
+#lower-right-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    float: right;
+    display: inline-block;
+    top: -185px;
+    right: -5px;
 }
 
 div #AircraftcarrierDiv {
@@ -124,6 +217,7 @@ div .ShipTable > #Cruiser {
 #MyBoard .ship{
 	background-color: orange;
 }
+
 
 
 
@@ -482,3 +576,4 @@ footer:before {
     }
 }
 */
+
