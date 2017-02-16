@@ -4,24 +4,33 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">i
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
 </head>
 <script src="/js/vendor/jquery-1.12.4.min.js"></script>
 <script src="/js/app.js"></script>
 
 <body onload="blink();">
+    <header>
+        <div class="game-title"><h1>BATTLESHIP</h1></div>
+        <div class="corner-bullets">
+            <ul>
+                <div id="upper-left-bullet"><li></li></div>
+                <div id="upper-right-bullet"><li></li></div>
+                <div id="lower-left-bullet"><li></li></div>
+                <div id="lower-right-bullet"><li></li></div>
+            </ul>
+        </div>
+    </header>
 <section id="todoapp" ic-target="this">
     <!--#parse("/velocity/todoList.vm")-->
     <div id="MyBoard" class="gameBoard">
-<<<<<<< HEAD
-=======
 	<style>
 	h1 {color: blue;}
 	h1 {font-family: courier;}
 	h1 {font-size: 35px;}
 	</style>
     <h1>Your Fleet</h1>
->>>>>>> 848992a0adbedcca739443ca215ec8cf3b8f40db
         <table style="border:none;">
             <tr id="Row_0">
                 <td align="center" style="background-color:white;border:none;">&nbsp;</td>
@@ -233,7 +242,6 @@
 	</div>
 	
     <div id="TheirBoard" class="gameBoard">
-<<<<<<< HEAD
         <table style="border=none;">
 	    <tr id="Row_0">
                 <td align="center" style="background-color:white;border:none;">&nbsp;</td>
@@ -248,7 +256,6 @@
                 <td align="center" style="background-color:white;border:none;">I</td>
                 <td align="center" style="background-color:white;border:none;">J</td>
             </tr>
-=======
 	<style>
 	h2 {color: red;}
 	h2 {font-family: courier;}
@@ -256,7 +263,6 @@
 	</style>
     <H2>Enemy Fleet</H2>
         <table>
->>>>>>> 848992a0adbedcca739443ca215ec8cf3b8f40db
             <tr id="My_Row_1">
 		<td align="center" style="background-color:white;border:none;">1</td>
                 <td id="1_1"  class="{{1_1}}" title="A1"></td>

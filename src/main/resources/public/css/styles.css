@@ -7,20 +7,28 @@ body {
     background-repeat: repeat;
 }
 
-.gameBoard {
-	width:464px;
+.gameBoard{
+	width: inherit;
 	/*width:400px;
 	/*height:100px;*/
 	display: inline-block;
 	background-color: light-gray;
 	padding-left:40px;
 	padding-right:40px;
+
 }
 
 .gameBoard td {
 	width: 40px;
 	height:40px;
 	background-color:blue;
+}
+
+#TheirBoard td:hover {
+	width: 40px;
+	height:40px;
+	background-color:red;
+	cursor: crosshair;
 }
 
 table, th, td {
@@ -64,6 +72,70 @@ div .ShipTable > .Ship{
 	float: right;
 }
 
+
+header{
+    background-color: black;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-color: #676767;
+    border-style: solid;
+    border-width: 15px;
+    height: 140px;
+    min-width: 900px;
+}
+
+.game-title h1{
+    font-family: 'Black Ops One', cursive;
+    font-weight: bold;
+    font-size: 600%;
+    color: #676767;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+#upper-left-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    top: -170px;
+    left: 13px;
+}
+
+#upper-right-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    float: right;
+    display: inline-block;
+    top: -225px;
+    right: -5px;
+}
+
+#lower-left-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    bottom: 128px;
+    left: 13px;
+}
+
+#lower-right-bullet{
+    list-style-type: disc;
+    font-size: 50px;
+    color: #676767;
+    position: relative;
+    float: right;
+    display: inline-block;
+    top: -185px;
+    right: -5px;
+}
+
 div #AircraftcarrierDiv {
     width: 600px;
     overflow-x: visible;
@@ -97,6 +169,7 @@ div .ShipTable > #Cruiser {
 #MyBoard .ship{
 	background-color: orange;
 }
+
 
 
 
@@ -141,7 +214,6 @@ input[type="checkbox"] {
 .hidden {
     display: none;
 }
-
 
 #todoapp {
     background: #fff;
@@ -231,7 +303,7 @@ label[for='toggle-all'] {
 }
 
 #toggle-all:before {
-    content: 'â¯';
+    content: '❯';
     font-size: 22px;
     color: #e6e6e6;
     padding: 10px 27px 10px 27px;
@@ -327,7 +399,7 @@ label[for='toggle-all'] {
 }
 
 #todo-list li .destroy:after {
-    content: 'Ã—';
+    content: '×';
 }
 
 #todo-list li:hover .destroy {
@@ -453,4 +525,7 @@ footer:before {
 
     #filters {
         bottom: 10px;
+    }
 }
+*/
+
