@@ -43,20 +43,7 @@ h3{
 	width: 40px;
 	height:40px;
 }
-h2{
-	font-family: courier;
-	font-size: 35px;
-}
-p{
-	font-family: monospace;
-	font-size: 15px;
-	display: inline;
-}
-h3{
-	font-family: monospace;
-	font-size: 30px;
-	font-weight: bold;
-}
+
 #firebutton{
 	color: white;
     background-color: #cc0000;
@@ -69,7 +56,6 @@ h3{
 }
 #TheirBoard.gameBoard td{
 	background-color:#1f7a1f;
-	background-color:blue;
 }
 
 #TheirBoard td:hover {
@@ -107,9 +93,12 @@ div .ShipTable > .Ship{
 	background-color:black;
 	display:inline-block;
 	margin-top:80px;
-	width:29%;
+	width:15%;
 	height:400px;
 	color:lightgreen;
+	position:relative;
+	right:420px;
+	top:150px;
 }
 .Terminal p{
 	color:lightgreen;
@@ -118,6 +107,9 @@ div .ShipTable > .Ship{
 
 #TheirBoard{
 	float: right;
+	position:relative;
+	left:120px;
+	bottom:800px;
 }
 
 
