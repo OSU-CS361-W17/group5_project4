@@ -13,15 +13,12 @@
 <section id="todoapp" ic-target="this">
     <!--#parse("/velocity/todoList.vm")-->
     <div id="MyBoard" class="gameBoard">
-<<<<<<< HEAD
-=======
 	<style>
 	h1 {color: blue;}
 	h1 {font-family: courier;}
 	h1 {font-size: 35px;}
 	</style>
     <h1>Your Fleet</h1>
->>>>>>> 848992a0adbedcca739443ca215ec8cf3b8f40db
         <table style="border:none;">
             <tr id="Row_0">
                 <td align="center" style="background-color:white;border:none;">&nbsp;</td>
@@ -37,8 +34,8 @@
                 <td align="center" style="background-color:white;border:none;">J</td>
             </tr>
             <tr id="My_Row_1">
-                <td align="center" style="background-color:white;border:none;">1</td>
-                <td id="1_1"  class="{{1_1}}" title="A1"></td>
+                <td align="center"  style="background-color:white;border:none;">1</td>
+                <td id="1_1" onclick="alert('STOP YOU VIOLATED THE LAW')" class="{{1_1}}" title="A1"></td>
                 <td id="1_2"  class="{{1_2}}" title="B1"></td>
                 <td id="1_3"  class="{{1_3}}" title="C1"></td>
                 <td id="1_4"  class="{{1_4}}" title="D1"></td>
@@ -233,9 +230,14 @@
 	</div>
 	
     <div id="TheirBoard" class="gameBoard">
-<<<<<<< HEAD
-        <table style="border=none;">
-	    <tr id="Row_0">
+        <style>
+	        h2 {color: red;}
+	        h2 {font-family: courier;}
+	        h2 {font-size: 35px;}
+	    </style>
+        <H1>Enemy Fleet</H1>
+        <table style="border:none;">
+	        <tr id="Row_0">
                 <td align="center" style="background-color:white;border:none;">&nbsp;</td>
                 <td align="center" style="background-color:white;border:none;">A</td>
                 <td align="center" style="background-color:white;border:none;">B</td>
@@ -248,17 +250,8 @@
                 <td align="center" style="background-color:white;border:none;">I</td>
                 <td align="center" style="background-color:white;border:none;">J</td>
             </tr>
-=======
-	<style>
-	h2 {color: red;}
-	h2 {font-family: courier;}
-	h2 {font-size: 35px;}
-	</style>
-    <H2>Enemy Fleet</H2>
-        <table>
->>>>>>> 848992a0adbedcca739443ca215ec8cf3b8f40db
             <tr id="My_Row_1">
-		<td align="center" style="background-color:white;border:none;">1</td>
+		        <td align="center" style="background-color:white;border:none;">1</td>
                 <td id="1_1"  class="{{1_1}}" title="A1"></td>
                 <td id="1_2"  class="{{1_2}}" title="B1"></td>
                 <td id="1_3"  class="{{1_3}}" title="C1"></td>
