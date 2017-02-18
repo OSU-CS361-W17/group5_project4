@@ -54,6 +54,7 @@ h3{
 #MyBoard.gameBoard td{
 	background-color:blue;
 }
+
 #TheirBoard.gameBoard td{
 	background-color:#1f7a1f;
 }
@@ -61,7 +62,7 @@ h3{
 #TheirBoard td:hover {
 	width: 40px;
 	height:40px;
-	background-color:red;
+	background-color:#66FF66;
 	cursor: crosshair;
 }
 
