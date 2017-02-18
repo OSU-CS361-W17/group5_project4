@@ -61,7 +61,7 @@ h3{
 #TheirBoard td:hover {
 	width: 40px;
 	height:40px;
-	background-color:red;
+	background-color:#66FF66;
 	cursor: crosshair;
 }
 
