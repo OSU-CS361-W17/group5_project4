@@ -1,4 +1,3 @@
-
 var gameModel;
 
 $( document ).ready(function() {
@@ -7,6 +6,7 @@ $( document ).ready(function() {
   gameModel = json;
     console.log( "JSON Data: " + json );
    });
+   //var tile = getElementsByTagName("TD");
 });
 
 function blink() {
@@ -43,14 +43,12 @@ function placeShip() {
 }
 
 
-
-
 function fire(){
+ console.log($( "#rowFire" ).val());
  console.log($( "#colFire" ).val());
-   console.log($( "#rowFire" ).val());
 //var menuId = $( "ul.nav" ).first().attr( "id" );
    var request = $.ajax({
-     url: "/fire/"+$( "#colFire" ).val()+"/"+$( "#rowFire" ).val(),
+     url: "/fire/"+$( "#rowFire" ).val()+"/"+$( "#colFire" ).val(),
      method: "post",
      data: JSON.stringify(gameModel),
      contentType: "application/json; charset=utf-8",
@@ -68,31 +66,6 @@ function fire(){
    });
 
 }
-
-function scan(){
- console.log($( "#colScan" ).val());
-   console.log($( "#rowScan" ).val());
-//var menuId = $( "ul.nav" ).first().attr( "id" );
-   var request = $.ajax({
-     url: "/scan/"+$( "#colScan" ).val()+"/"+$( "#rowScan" ).val(),
-     method: "post",
-     data: JSON.stringify(gameModel),
-     contentType: "application/json; charset=utf-8",
-     dataType: "json"
-   });
-
-   request.done(function( currModel ) {
-     displayGameState(currModel);
-     gameModel = currModel;
-
-   });
-
-   request.fail(function( jqXHR, textStatus ) {
-     alert( "Request failed: " + textStatus );
-   });
-
-}
-
 
 function log(logContents){
     console.log(logContents);
@@ -131,8 +104,6 @@ for (var i = 0; i < gameModel.playerHits.length; i++) {
 
 }
 
-
-
 function displayShip(ship){
  startCoordAcross = ship.start.Across;
  startCoordDown = ship.start.Down;
@@ -150,6 +121,17 @@ function displayShip(ship){
         }
     }
  }
+}
 
 
+//testing to add coordinates clicked to fire selection
+document.addEventListener('click', whereClick);
+
+function whereClick(event){
+    console.log(event.target);
+}
+
+function whereClick(){
+    var tile = document.getElementsByTagName("TD");
+    document.getElementById("demo").innerHTML = tile[1].innerHTML;
 }
