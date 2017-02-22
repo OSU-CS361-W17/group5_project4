@@ -56,16 +56,42 @@ function fire(){
    });
 
    request.done(function( currModel ) {
+ //    if(curModel.scanResult){
+//        alert("Scan found a ship in a tile")}
+//     else{
+//        alert("Scan found no ships")}
      displayGameState(currModel);
      gameModel = currModel;
-
    });
 
    request.fail(function( jqXHR, textStatus ) {
      alert( "Request failed: " + textStatus );
-   });
+    });
 
 }
+
+//function scan(){
+//    console.log($("#colScan").val());
+//    console.log($("#rowScan").val());
+//    var request = $.ajax({
+//    url: "/scan/"+$("#colScan").val()+"/"+$("#rowScan").val(),
+//    method: "post",
+//    data: JSON.stringify(gameModel),
+//    contentType: "application/json; charset=utf-8",
+//    dataType: "json"
+//    });
+//
+//    request.done(function( currModel ){
+//        displayGameState(currModel);
+//        gameModel = currModel;
+//    });
+//
+//    request.fail(function( jqXHR, textStatus ) {
+//     alert( "Request failed: " + textStatus );
+//    });
+//
+//}
+
 
 function log(logContents){
     console.log(logContents);
@@ -73,12 +99,12 @@ function log(logContents){
 
 function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
-$( '#TheirBoard td'  ).css("background-color", "blue");
+$( '#TheirBoard td'  ).css("background-color", "green");
 
-if(gameModel.scanResult){
-alert("Scan found at least one Ship")}
-else{
-alert("Scan found no Ships")}
+///if(gameModel.scanResult){
+//alert("Scan found at least one Ship")}
+//else{
+//alert("Scan found no Ships")}*/
 
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
@@ -87,7 +113,7 @@ displayShip(gameModel.destroyer);
 displayShip(gameModel.submarine);
 
 for (var i = 0; i < gameModel.computerMisses.length; i++) {
-   $( '#TheirBoard #' + gameModel.computerMisses[i].Across + '_' + gameModel.computerMisses[i].Down ).css("background-color", "green");
+   $( '#TheirBoard #' + gameModel.computerMisses[i].Across + '_' + gameModel.computerMisses[i].Down ).css("background-color", "black");
 }
 for (var i = 0; i < gameModel.computerHits.length; i++) {
    $( '#TheirBoard #' + gameModel.computerHits[i].Across + '_' + gameModel.computerHits[i].Down ).css("background-color", "red");
