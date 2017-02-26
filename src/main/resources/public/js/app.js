@@ -7,14 +7,14 @@ $( document ).ready(function() {
     console.log( "JSON Data: " + json );
    });
    //var tile = getElementsByTagName("TD");
-});
-
 function blink() {
    var f = document.getElementById('blink');
     setInterval(function() {
         f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
     }, 1000);
 }
+});
+
 
 function placeShip() {
    console.log($( "#shipSelec" ).val());
