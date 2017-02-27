@@ -147,6 +147,8 @@ public class BattleshipModel {
             scanResult = true;
         }else if (computer_destroyer.scan(coor)){
             scanResult = true;
+	}else if (computer_submarine.scan(coor)){
+	    scanResult = false; /* Changed to false, so the submarine is undetectable by the scan feature*/
         }else {
             scanResult = false;
         }
