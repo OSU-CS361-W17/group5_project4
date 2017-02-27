@@ -205,26 +205,15 @@ public class BattleshipModel {
         scanResult = false;
         if(computer_aircraftCarrier.scan(coor)){
             scanResult = true;
-        }
-//        else if (computer_battleship.scan(coor)){
-//            scanResult = true;
-//        }
-//        else if (computer_cruiser.scan(coor)){
-//            scanResult = true;
-//        }
-//        else if (computer_destroyer.scan(coor)){
-//            scanResult = true;
-//        }
-//        else if (computer_submarine.scan(coor)){
-//            scanResult = true;
-//        }
-        else if (computer_clipper.scan(coor)){
+        }else if (computer_battleship.scan(coor)){
             scanResult = true;
-        }
-        else if(computer_dinghy.scan(coor)){
+        }else if (computer_clipper.scan(coor)){
             scanResult = true;
-        }
-        else {
+        }else if (computer_dinghy.scan(coor)){
+            scanResult = true;
+	      }else if (computer_submarine.scan(coor)){
+	          scanResult = false; /* Changed to false, so the submarine is undetectable by the scan feature*/
+        }else {
             scanResult = false;
         }
     }
