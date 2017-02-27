@@ -101,10 +101,10 @@ function log(logContents){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "green");
 
-///if(gameModel.scanResult){
-//alert("Scan found at least one Ship")}
-//else{
-//alert("Scan found no Ships")}*/
+if(gameModel.scanResult){
+alert("Scan found at least one Ship")}
+else{
+alert("Scan found no Ships")}
 
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
