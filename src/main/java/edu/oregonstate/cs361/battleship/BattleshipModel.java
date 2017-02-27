@@ -147,9 +147,7 @@ public class BattleshipModel {
             scanResult = true;
         }else if (computer_destroyer.scan(coor)){
             scanResult = true;
-        }else if (computer_submarine.scan(coor)){
-            scanResult = true;
-        } else {
+        }else {
             scanResult = false;
         }
     }
