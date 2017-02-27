@@ -32,7 +32,7 @@ function placeShip() {
    });
 
    request.done(function( currModel ) {
-     displayGameState(currModel);
+     //displayGameState(currModel);
      gameModel = currModel;
 
    });
@@ -60,7 +60,7 @@ function fire(){
 //        alert("Scan found a ship in a tile")}
 //     else{
 //        alert("Scan found no ships")}
-     displayGameState(currModel);
+     //displayGameState(currModel);
      gameModel = currModel;
    });
 
@@ -97,7 +97,7 @@ function log(logContents){
     console.log(logContents);
 }
 
-function displayGameState(gameModel){
+/*function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "green");
 
@@ -108,11 +108,9 @@ alert("Scan found no Ships")}
 
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
-//displayShip(gameModel.cruiser);
-//displayShip(gameModel.destroyer);
+displayShip(gameModel.cruiser);
+displayShip(gameModel.destroyer);
 displayShip(gameModel.submarine);
-displayShip(gameModel.clipper);
-displayShip(gameModel.dinghy);
 
 for (var i = 0; i < gameModel.computerMisses.length; i++) {
    $( '#TheirBoard #' + gameModel.computerMisses[i].Across + '_' + gameModel.computerMisses[i].Down ).css("background-color", "black");
