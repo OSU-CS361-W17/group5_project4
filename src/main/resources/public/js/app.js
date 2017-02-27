@@ -7,14 +7,14 @@ $( document ).ready(function() {
     console.log( "JSON Data: " + json );
    });
    //var tile = getElementsByTagName("TD");
-});
-
 function blink() {
    var f = document.getElementById('blink');
     setInterval(function() {
         f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
     }, 1000);
 }
+});
+
 
 function placeShip() {
    console.log($( "#shipSelec" ).val());
@@ -101,16 +101,18 @@ function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "green");
 
-///if(gameModel.scanResult){
-//alert("Scan found at least one Ship")}
-//else{
-//alert("Scan found no Ships")}*/
+if(gameModel.scanResult){
+alert("Scan found at least one Ship")}
+else{
+alert("Scan found no Ships")}
 
 displayShip(gameModel.aircraftCarrier);
 displayShip(gameModel.battleship);
-displayShip(gameModel.cruiser);
-displayShip(gameModel.destroyer);
+//displayShip(gameModel.cruiser);
+//displayShip(gameModel.destroyer);
 displayShip(gameModel.submarine);
+displayShip(gameModel.clipper);
+displayShip(gameModel.dinghy);
 
 for (var i = 0; i < gameModel.computerMisses.length; i++) {
    $( '#TheirBoard #' + gameModel.computerMisses[i].Across + '_' + gameModel.computerMisses[i].Down ).css("background-color", "black");
