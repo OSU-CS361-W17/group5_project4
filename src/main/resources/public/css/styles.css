@@ -119,7 +119,7 @@ p{
 	font-size: 20px;
 }
 
-div #AircraftcarrierDiv {
+#MyBoard > #AircraftcarrierDiv {
     width: 600px;
     overflow-x: visible;
 }
