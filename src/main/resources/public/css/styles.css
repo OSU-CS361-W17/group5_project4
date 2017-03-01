@@ -1,74 +1,172 @@
-html,
-body {
+/***********************
+*GLOBAL VARIABLES
+***********************/
+html, body {
     min-width: 1250px;
     margin: 0;
     padding: 0;
 	background-image: url("light_water-tile_300x300.jpg");
     background-repeat: repeat;
 }
+th, td {
+   border: 1px solid black;
+}
+/***********************
+*INDIVIDUAL VARIABLES
+***********************/
+header{
+    background-color: black;
+	display: block;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-color: #676767;
+    border-style: solid;
+    border-width: 15px;
+    height: 140px;
+    min-width: 900px;
+}
+header > h1{
+	font-family: 'Black Ops One', cursive;
+    font-weight: bold;
+    font-size: 100px;
+    color: #676767;
+    margin-top: 10px;
+	margin-bottom:-24px;
+    padding: 0px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+header > .bullet{
+	display: inline-block;
+	border-radius:10px;
+	width:20px;
+	height:20px;
+	background-color: #676767;
+}
+header > #upperLeft, #lowerLeft{
+	float: left;
+	margin-left: 8px;
+}
+header > #upperRight, #lowerRight{
+	float: right;
+	margin-right: 8px;
+}
+header > #upperRight, #upperLeft{
+	margin-top: 8px;
+}
+
+header > #lowerRight, #lowerLeft{
+	margin-bottom: 8px;
+}
+
 h2{
 	font-family: courier;
 	font-size: 35px;
-}
-p{
-	font-family: monospace;
-	font-size: 15px;
-	display: inline;
 }
 h3{
 	font-family: monospace;
 	font-size: 30px;
 	font-weight: bold;
 }
-#firebutton{
-	color: white;
-    background-color: #cc0000;
-    width: 50px;
-    height: 30px;
-	font-size: 20px;
+p{
+	font-family: monospace;
+	font-size: 15px;
+	display: inline;
 }
 .gameBoard {
 	width:464px;
-	width: inherit;
-	/*width:400px;
-	/*height:100px;*/
 	display: inline-block;
 	background-color: light-gray;
-	padding-left:40px;
-	padding-right:40px;
-
+	padding: 0 4%;
 }
 
 .gameBoard td {
 	width: 40px;
-	height:40px;
+	height: 39px;
+	text-align: center;
 }
 
-#firebutton{
+#MyBoard{
+	float:left;
+}
+#TheirBoard{
+	float: right;
+}
+
+#MyBoard.gameBoard td:not(.borderCoord){
+	background-color:blue;
+}
+
+#TheirBoard.gameBoard td:not(.borderCoord){
+	background-color:#1f7a1f;
+}
+
+#TheirBoard td:hover:not(.borderCoord) {
+	background-color:#66FF66;
+	cursor: crosshair;
+}
+.gameBoard .borderCoord{
+	background-color: white;
+	border: none;
+}
+
+#MyBoard > #AircraftcarrierDiv {
+    width: 600px;
+    overflow-x: visible;
+}
+#TheirBoard > #AircraftcarrierDiv > #firebutton{
 	color: white;
     background-color: #cc0000;
     width: 50px;
     height: 30px;
 	font-size: 20px;
 }
-#MyBoard.gameBoard td{
-	background-color:blue;
+#TheirBoard > #AircraftcarrierDiv > #scanbutton{
+	color: white;
+    background-image: url("small_radar_56x100.png");
+	background-position: center center;
+	background-size: 100%;
+	border-color:black;
+    width: 56px;
+    height: 30px;
+	font-size: 20px;
 }
 
-#TheirBoard.gameBoard td{
-	background-color:#1f7a1f;
+
+
+/*div #AircraftcarrierDiv p {
+	font-size:18px;
+    margin-bottom:4px;
 }
 
-#TheirBoard td:hover {
-	width: 40px;
-	height:40px;
-	background-color:#66FF66;
-	cursor: crosshair;
+.gameBoard table.borderCoord td{
+	background-color:white;
 }
 
-table, th, td {
-   border: 1px solid black;
+/*#MyBoard .ship{
+	background-color: orange;
 }
+.gameBoard.borderCoord{
+    background-color:white;
+    border:none;
+}
+div #MyBoard table:active{
+	alert('Cannot fire here');
+}
+
+#TheirBoard .gameBoard tr:nth-child(1){
+    background-color: red;
+}
+.gameBoard td:nth-child(1) {
+    background-color: red;
+}
+
+#TheirBoard .gameBoard.borderCoord{
+    background-color: white;
+    }
+
+
 div .ShipTable{
 	display: inline-block;
 	border: none;
@@ -84,106 +182,6 @@ div .ShipTable > .Ship{
 	padding:10px;
 	font-family:arial;
 	color: white;
-}
-#MyBoard{
-	float:left;
-}
-.Terminal{
-	padding:10px;
-	border-radius: 10px;
-	background-color:black;
-	display:inline-block;
-	margin-top:80px;
-	width:15%;
-	height:400px;
-	color:lightgreen;
-	position:relative;
-	right:420px;
-	top:150px;
-}
-.Terminal p{
-	color:lightgreen;
-	margin:0;
-}
-
-#TheirBoard{
-	float: right;
-	position:relative;
-	left:120px;
-	bottom:800px;
-}
-
-
-header{
-    background-color: black;
-    margin-top: 5px;
-    margin-right: 5px;
-    margin-left: 5px;
-    border-color: #676767;
-    border-style: solid;
-    border-width: 15px;
-    height: 140px;
-    min-width: 900px;
-}
-
-.game-title h1{
-    font-family: 'Black Ops One', cursive;
-    font-weight: bold;
-    font-size: 600%;
-    color: #676767;
-    text-align: center;
-    letter-spacing: 2px;
-    margin-top: 10px;
-    margin-bottom: 25px;
-}
-
-#upper-left-bullet{
-    list-style-type: disc;
-    font-size: 50px;
-    color: #676767;
-    position: relative;
-    top: -170px;
-    left: 13px;
-}
-
-#upper-right-bullet{
-    list-style-type: disc;
-    font-size: 50px;
-    color: #676767;
-    position: relative;
-    float: right;
-    display: inline-block;
-    top: -225px;
-    right: -5px;
-}
-
-#lower-left-bullet{
-    list-style-type: disc;
-    font-size: 50px;
-    color: #676767;
-    position: relative;
-    bottom: 128px;
-    left: 13px;
-}
-
-#lower-right-bullet{
-    list-style-type: disc;
-    font-size: 50px;
-    color: #676767;
-    position: relative;
-    float: right;
-    display: inline-block;
-    top: -185px;
-    right: -5px;
-}
-
-div #AircraftcarrierDiv {
-    width: 600px;
-    overflow-x: visible;
-}
-div #AircraftcarrierDiv p {
-	font-size:18px;
-    margin-bottom:4px;
 }
 
 div .ShipTable > #AircraftCarrier {
@@ -205,13 +203,6 @@ div .ShipTable > #Destroyer {
 div .ShipTable > #Cruiser {
 	width: 80px;
 }
-
-
-#MyBoard .ship{
-	background-color: orange;
-}
-
-
 
 
 /*
