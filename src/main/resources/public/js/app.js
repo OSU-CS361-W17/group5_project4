@@ -70,27 +70,27 @@ function fire(){
 
 }
 
-//function scan(){
-//    console.log($("#colScan").val());
-//    console.log($("#rowScan").val());
-//    var request = $.ajax({
-//    url: "/scan/"+$("#colScan").val()+"/"+$("#rowScan").val(),
-//    method: "post",
-//    data: JSON.stringify(gameModel),
-//    contentType: "application/json; charset=utf-8",
-//    dataType: "json"
-//    });
-//
-//    request.done(function( currModel ){
-//        displayGameState(currModel);
-//        gameModel = currModel;
-//    });
-//
-//    request.fail(function( jqXHR, textStatus ) {
-//     alert( "Request failed: " + textStatus );
-//    });
-//
-//}
+function scan(){
+    console.log($("#colScan").val());
+    console.log($("#rowScan").val());
+    var request = $.ajax({
+    url: "/scan/"+$("#colScan").val()+"/"+$("#rowScan").val(),
+    method: "post",
+    data: JSON.stringify(gameModel),
+	contentType: "application/json; charset=utf-8",
+    dataType: "json"
+    });
+
+   request.done(function( currModel ){
+        displayGameState(currModel);
+        gameModel = currModel;
+    });
+
+    request.fail(function( jqXHR, textStatus ) {
+     alert( "Request failed: " + textStatus );
+    });
+
+}
 
 
 function log(logContents){
@@ -100,7 +100,7 @@ function log(logContents){
 /*function displayGameState(gameModel){
 $( '#MyBoard td'  ).css("background-color", "blue");
 $( '#TheirBoard td'  ).css("background-color", "green");
-
+*/
 if(gameModel.scanResult){
 alert("Scan found at least one Ship")}
 else{
