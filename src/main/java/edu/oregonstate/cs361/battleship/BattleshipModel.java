@@ -146,74 +146,76 @@ public class BattleshipModel {
         else if (computer_submarine.covers(coor)){
             computerHits.add(coor);
         }
-        else if (computer_clipper.covers(coor)){
+        else if (computer_clipper.covers(coor)) {
             computerHits.add(computer_clipper.start);
             computerHits.add(computer_clipper.end);
             //add code to sink entire civilian ship
-            /*Coordinate begin = computer_clipper.start;
+            Coordinate begin = computer_clipper.start;
             Coordinate end = computer_clipper.end;
-            if(begin.getDown() == end.getDown()){
-                switch(begin.getAcross()){
+            if (begin.getDown() == end.getDown()) {
+                switch (begin.getAcross()) {
                     case '1':
-                        begin.getAcross() = 2;
+                        begin.setAcross(2);
                         break;
                     case '2':
-                        begin.getAcross() = 3;
+                        begin.setAcross(3);
                         break;
                     case '3':
-                        begin.getAcross() = 4;
+                        begin.setAcross(4);
                         break;
                     case '4':
-                        begin.getAcross() = 5;
+                        begin.setAcross(5);
                         break;
                     case '5':
-                        begin.getAcross() = 6;
+                        begin.setAcross(6);
                         break;
                     case '6':
-                        begin.getAcross() = 7;
+                        begin.setAcross(7);
                         break;
                     case '7':
-                        begin.getAcross() = 8;
+                        begin.setAcross(8);
                         break;
                     case '8':
-                        begin.getAcross() = 9;
+                        begin.setAcross(9);
                         break;
                     case '9':
-                        begin.getAcross() = 10;
-                        break;
-            }
-
-        }
-        if(begin.getAcross() == end.getAcross()){
-                switch(begin.getDown()){
-                    case '1':
-                        begin.getDown() = 2;
-                        break;
-                    case '2':
-                        begin.getDown() = 3;
-                        break;
-                    case '3':
-                        begin.getDown() = 4;
-                        break;
-                    case '4':
-                        begin.getDown() = 5;
-                        break;
-                    case '5':
-                        begin.getDown() = 6;
-                        break;
-                    case '6':
-                        begin.getDown() = 7;
-                        break;
-                    case '7':begin.getDown() = 8;
-                        break;
-                    case '8':
-                        begin.getDown() = 9;
-                        break;
-                    case '9':
-                        begin.getDown() = 10;
+                        begin.setAcross(10);
                         break;
                 }
-                computerHits.add(begin);*/
+
+            }
+            if (begin.getAcross() == end.getAcross()) {
+                switch (begin.getDown()) {
+                    case '1':
+                        begin.setDown(2);
+                        break;
+                    case '2':
+                        begin.setDown(3);
+                        break;
+                    case '3':
+                        begin.setDown(4);
+                        break;
+                    case '4':
+                        begin.setDown(5);
+                        break;
+                    case '5':
+                        begin.setDown(6);
+                        break;
+                    case '6':
+                        begin.setDown(7);
+                        break;
+                    case '7':
+                        begin.setDown(8);
+                        break;
+                    case '8':
+                        begin.setDown(9);
+                        break;
+                    case '9':
+                        begin.setDown(10);
+                        break;
+                }
+                computerHits.add(begin);
+            }
         }
         else if (computer_dinghy.covers(coor)){
             computerHits.add(coor);
