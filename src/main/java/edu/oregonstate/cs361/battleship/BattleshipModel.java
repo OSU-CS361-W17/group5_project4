@@ -147,7 +147,73 @@ public class BattleshipModel {
             computerHits.add(coor);
         }
         else if (computer_clipper.covers(coor)){
-            computerHits.add(coor);
+            computerHits.add(computer_clipper.start);
+            computerHits.add(computer_clipper.end);
+            //add code to sink entire civilian ship
+            /*Coordinate begin = computer_clipper.start;
+            Coordinate end = computer_clipper.end;
+            if(begin.getDown() == end.getDown()){
+                switch(begin.getAcross()){
+                    case '1':
+                        begin.getAcross() = 2;
+                        break;
+                    case '2':
+                        begin.getAcross() = 3;
+                        break;
+                    case '3':
+                        begin.getAcross() = 4;
+                        break;
+                    case '4':
+                        begin.getAcross() = 5;
+                        break;
+                    case '5':
+                        begin.getAcross() = 6;
+                        break;
+                    case '6':
+                        begin.getAcross() = 7;
+                        break;
+                    case '7':
+                        begin.getAcross() = 8;
+                        break;
+                    case '8':
+                        begin.getAcross() = 9;
+                        break;
+                    case '9':
+                        begin.getAcross() = 10;
+                        break;
+            }
+
+        }
+        if(begin.getAcross() == end.getAcross()){
+                switch(begin.getDown()){
+                    case '1':
+                        begin.getDown() = 2;
+                        break;
+                    case '2':
+                        begin.getDown() = 3;
+                        break;
+                    case '3':
+                        begin.getDown() = 4;
+                        break;
+                    case '4':
+                        begin.getDown() = 5;
+                        break;
+                    case '5':
+                        begin.getDown() = 6;
+                        break;
+                    case '6':
+                        begin.getDown() = 7;
+                        break;
+                    case '7':begin.getDown() = 8;
+                        break;
+                    case '8':
+                        begin.getDown() = 9;
+                        break;
+                    case '9':
+                        begin.getDown() = 10;
+                        break;
+                }
+                computerHits.add(begin);*/
         }
         else if (computer_dinghy.covers(coor)){
             computerHits.add(coor);
