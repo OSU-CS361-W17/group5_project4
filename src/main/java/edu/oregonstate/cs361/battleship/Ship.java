@@ -9,13 +9,6 @@ public class Ship {
     protected Coordinate start;
     protected Coordinate end;
 
-//    public Ship() {
-//        name = "";
-//        length = 0;
-//        start = new Coordinate(0,0);
-//        end = new Coordinate(0,0);
-//    }
-
     public Ship(String n, int l,Coordinate s, Coordinate e) {
         name = n;
         length = l;
@@ -23,11 +16,9 @@ public class Ship {
         end = e;
     }
 
-
     public void setLocation(Coordinate s, Coordinate e) {
         start = s;
         end = e;
-
     }
 
     public boolean covers(Coordinate test) {
