@@ -148,7 +148,20 @@ function displayShip(ship){
 		}
 	}
 }
-
+function myCoord(x, y){
+	document.getElementById('rowSelec').selectedIndex = (x - 1);
+	document.getElementById('colSelec').selectedIndex = (y - 1);
+	//console.log("x: " + x + ", y: " + y);
+}
+function theirCoord(x, y){
+	//var rowFire = document.getElementById('rowFire');
+	//var colFire = document.getElementById('colFire');
+	document.getElementById('rowFire').selectedIndex = (x - 1);
+	document.getElementById('colFire').selectedIndex = (y - 1);
+	//$('#rowFire').eq(x).prop('selected', true).trigger('change');
+	//$('#colFire').eq(y).prop('selected', true).trigger('change');
+	console.log("x: " + x + ", y: " + y);
+}
 
 /*/testing to add coordinates clicked to fire selection
 document.addEventListener('click', whereClick);
