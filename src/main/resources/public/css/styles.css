@@ -111,19 +111,27 @@ p{
 	border: none;
 }
 
-#firebutton{
+#MyBoard > #AircraftcarrierDiv {
+    width: 600px;
+    overflow-x: visible;
+}
+#TheirBoard > #AircraftcarrierDiv > #firebutton{
 	color: white;
     background-color: #cc0000;
     width: 50px;
     height: 30px;
 	font-size: 20px;
 }
-
-div #AircraftcarrierDiv {
-    width: 600px;
-    overflow-x: visible;
+#TheirBoard > #AircraftcarrierDiv > #scanbutton{
+	color: white;
+    background-image: url("small_radar_56x100.png");
+	background-position: center center;
+	background-size: 100%;
+	border-color:black;
+    width: 56px;
+    height: 30px;
+	font-size: 20px;
 }
-
 
 
 
