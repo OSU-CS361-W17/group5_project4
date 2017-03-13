@@ -52,9 +52,10 @@ public class Main {
         String col = req.params("col");
         String orientation = req.params("orientation");
         currModel = currModel.placeShip(id,row,col,orientation);
+        //currModel = currModel.placeShip(id, row, col, orientation);
         //testing
-        Ship clipper = currModel.getShip("clipper");
-        System.out.println("clipper: " + clipper.start.getAcross() + "," + clipper.start.getDown());
+        //Ship clipper = currModel.getShip("clipper");
+        //System.out.println("clipper: " + clipper.start.getAcross() + "," + clipper.start.getDown());
         Gson gson = new Gson();
         return gson.toJson(currModel);
     }
