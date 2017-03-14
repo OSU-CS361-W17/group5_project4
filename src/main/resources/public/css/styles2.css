@@ -1,0 +1,39 @@
+#EZ{
+	position:absolute;
+	margin-left: 200px;
+	margin-top: 100px;
+	
+}
+#hard{
+	position:absolute;
+	margin-left: 800px;
+	margin-top: 100px;
+	
+}
+h1{
+	position:absolute;
+	margin-left: 340px;
+	font-size: 40px;
+	color: green;
+}
+h2{
+	position:absolute;
+	margin-left: 920px;
+	font-size: 40px;
+	color: red;
+}
+header{
+	background-color: #cc0000;
+	font-family: Impact, Charcoal, sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    color: black;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-color: #676767;
+    border-style: solid;
+    border-width: 15px;
+    height: 140px;
+    min-width: 900px;
+}
