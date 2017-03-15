@@ -7,12 +7,12 @@ import java.util.ArrayList;
  */
 class CivilianShip extends Ship {
 
-    public CivilianShip(String n, int l, Coordinate s, Coordinate e, boolean b) {
-        super(n, l, s, e, b);
+    public CivilianShip(String n, int l, Coordinate s, Coordinate e) {
+        super(n, l, s, e);
     }
-
-//    ArrayList <Coordinate> one_hit() {
-//        return this.getShipSquares();
-//    }
+    //adopted from group 20
+    ArrayList <Coordinate> one_hit() {
+        return this.getShipSquares();
+    }
 
 }
