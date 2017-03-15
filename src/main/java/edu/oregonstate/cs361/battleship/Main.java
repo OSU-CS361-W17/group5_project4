@@ -87,6 +87,19 @@ public class Main {
         return gson.toJson(currModel);
     }
 
+//    private static String difficulty(Request req) {
+//
+//        BattleshipModel currModel = getModelFromReq(req);
+//        String row = req.params("row");
+//        String col = req.params("col");
+//        int rowInt = Integer.parseInt(row);
+//        int colInt = Integer.parseInt(col);
+//        //something from model about difficulty
+//        //currModel.scan(rowInt,colInt);
+//        //currModel.shootAtPlayer();
+//        Gson gson = new Gson();
+//        return gson.toJson(currModel);
+//    }
 
 
 }

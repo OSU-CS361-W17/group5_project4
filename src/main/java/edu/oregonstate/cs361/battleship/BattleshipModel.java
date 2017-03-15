@@ -9,22 +9,23 @@ import java.util.Random;
  */
 public class BattleshipModel {
 
-    private Ship aircraftCarrier = new Ship("aircraftcarrier",5, new Coordinate(0,0),new Coordinate(0,0), false);
-    private Ship battleship = new Ship("battleship",4, new Coordinate(0,0),new Coordinate(0,0), true);
-    private Ship submarine = new Ship("submarine",2, new Coordinate(0,0),new Coordinate(0,0), true);
-    private Ship clipper = new CivilianShip( "clipper", 3, new Coordinate( 0, 0), new Coordinate( 0, 0), false);
-    private Ship dinghy = new CivilianShip( "dinghy", 1, new Coordinate ( 0, 0), new Coordinate( 0, 0), false);
+    private MilitaryShip aircraftCarrier = new MilitaryShip(false,"aircraftcarrier",5, new Coordinate(0,0),new Coordinate(0,0));
+    private MilitaryShip battleship = new MilitaryShip(true,"battleship",4, new Coordinate(0,0),new Coordinate(0,0));
+    private MilitaryShip submarine = new MilitaryShip(true,"submarine",2, new Coordinate(0,0),new Coordinate(0,0));
+    private CivilianShip clipper = new CivilianShip("clipper", 3, new Coordinate(0, 0), new Coordinate(0, 0));
+    private CivilianShip dinghy = new CivilianShip("dinghy", 1, new Coordinate(0, 0), new Coordinate(0, 0));
 
-    private Ship computer_aircraftCarrier = new Ship("Computer_AircraftCarrier",5, new Coordinate(2,2),new Coordinate(2,6), false);
-    private Ship computer_battleship = new Ship("Computer_Battleship",4, new Coordinate(2,8),new Coordinate(5,8), true);
-    private Ship computer_submarine = new Ship("Computer_Submarine",2, new Coordinate(9,6),new Coordinate(9,7), true);
-    private Ship computer_clipper = new CivilianShip( "Computer_Clipper", 3, new Coordinate( 1, 1), new Coordinate( 3, 1), false);
-    private Ship computer_dinghy = new CivilianShip( "Computer_Dinghy", 1, new Coordinate ( 10, 10), new Coordinate( 10, 10), false);
+    private MilitaryShip computer_aircraftCarrier = new MilitaryShip(false,"Computer_AircraftCarrier",5, new Coordinate(2,2),new Coordinate(2,6));
+    private MilitaryShip computer_battleship = new MilitaryShip(true,"Computer_Battleship",4, new Coordinate(2,8),new Coordinate(5,8));
+    private MilitaryShip computer_submarine = new MilitaryShip(true,"Computer_Submarine",2, new Coordinate(9,6),new Coordinate(9,7));
+    private CivilianShip computer_clipper = new CivilianShip("Computer_Clipper", 3, new Coordinate(5, 1), new Coordinate(5, 3));
+    private CivilianShip computer_dinghy = new CivilianShip("Computer_Dinghy", 1, new Coordinate(10, 10), new Coordinate(10, 10));
 
     ArrayList<Coordinate> playerHits;
     private ArrayList<Coordinate> playerMisses;
     ArrayList<Coordinate> computerHits;
     private ArrayList<Coordinate> computerMisses;
+    //adopted from group 20
     ArrayList<Coordinate> shipSquares;
 
     boolean scanResult = false;
@@ -38,6 +39,7 @@ public class BattleshipModel {
         playerMisses= new ArrayList<>();
         computerHits = new ArrayList<>();
         computerMisses= new ArrayList<>();
+        //adopted from group 20
         shipSquares = new ArrayList<>();
     }
 
@@ -131,96 +133,6 @@ public class BattleshipModel {
         return this;
     }
 
-//    public void shootAtComputer(int row, int col) {
-//        Coordinate coor = new Coordinate(row,col);
-//        if(computer_aircraftCarrier.covers(coor)){
-//            computerHits.add(coor);
-//        }
-//        else if (computer_battleship.covers(coor)){
-//            computerHits.add(coor);
-//        }
-//        else if (computer_submarine.covers(coor)){
-//            computerHits.add(coor);
-//        }
-//        else if (computer_clipper.covers(coor)) {
-//            computerHits.add(computer_clipper.start);
-//            computerHits.add(computer_clipper.end);
-//            //add code to sink entire civilian ship
-//            Coordinate begin = computer_clipper.start;
-//            Coordinate end = computer_clipper.end;
-//            if (begin.getDown() == end.getDown()) {
-//                switch (begin.getAcross()) {
-//                    case '1':
-//                        begin.setAcross(2);
-//                        break;
-//                    case '2':
-//                        begin.setAcross(3);
-//                        break;
-//                    case '3':
-//                        begin.setAcross(4);
-//                        break;
-//                    case '4':
-//                        begin.setAcross(5);
-//                        break;
-//                    case '5':
-//                        begin.setAcross(6);
-//                        break;
-//                    case '6':
-//                        begin.setAcross(7);
-//                        break;
-//                    case '7':
-//                        begin.setAcross(8);
-//                        break;
-//                    case '8':
-//                        begin.setAcross(9);
-//                        break;
-//                    case '9':
-//                        begin.setAcross(10);
-//                        break;
-//                }
-//
-//            }
-//            if (begin.getAcross() == end.getAcross()) {
-//                switch (begin.getDown()) {
-//                    case '1':
-//                        begin.setDown(2);
-//                        break;
-//                    case '2':
-//                        begin.setDown(3);
-//                        break;
-//                    case '3':
-//                        begin.setDown(4);
-//                        break;
-//                    case '4':
-//                        begin.setDown(5);
-//                        break;
-//                    case '5':
-//                        begin.setDown(6);
-//                        break;
-//                    case '6':
-//                        begin.setDown(7);
-//                        break;
-//                    case '7':
-//                        begin.setDown(8);
-//                        break;
-//                    case '8':
-//                        begin.setDown(9);
-//                        break;
-//                    case '9':
-//                        begin.setDown(10);
-//                        break;
-//                }
-//                computerHits.add(begin);
-//            }
-//        }
-//        else if (computer_dinghy.covers(coor)){
-//            computerHits.add(coor);
-//        }
-//        else {
-//            computerMisses.add(coor);
-//        }
-//    }
-
     //adopted from group 20
     public void shootAtComputer(int row, int col) {
         overlapResult = false;
@@ -251,46 +163,40 @@ public class BattleshipModel {
         Coordinate coor = new Coordinate(randRow,randCol);
         playerShot(coor);
     }
-
+    //adopted from group 20
     void playerShot(Coordinate coor) {
         if(playerMisses.contains(coor)){
-            //System.out.println("Dupe");
         }
         if(aircraftCarrier.covers(coor)){
             playerHits.add(coor);
-        }
-        else if (battleship.covers(coor)){
+        }else if (battleship.covers(coor)){
             playerHits.add(coor);
-        }
-        else if (submarine.covers(coor)){
+        }else if (submarine.covers(coor)){
             playerHits.add(coor);
-        }
-        else if (clipper.covers(coor)){
-            playerHits.add(coor);
-        }
-        else if (dinghy.covers(coor)){
-            playerHits.add(coor);
-        }
-        else {
+        }else if (clipper.covers(coor)){
+            playerHits.addAll(clipper.one_hit());
+        }else if (dinghy.covers(coor)){
+            playerHits.addAll(dinghy.one_hit());
+        } else {
             playerMisses.add(coor);
         }
     }
 
-
+    //adopted from group 20
     public void scan(int rowInt, int colInt) {
         Coordinate coor = new Coordinate(rowInt,colInt);
         scanResult = false;
-        if(computer_aircraftCarrier.scan(coor)) {
+        if(computer_aircraftCarrier.scan(coor)){
             scanResult = true;
-        }else if (computer_battleship.scan(coor)){
-            scanResult = false; /*changed to false, so battleship is undetectable by scan*/
+        } else if (computer_battleship.scan(coor)){
+            scanResult = true;
+        }else if (computer_submarine.scan(coor)){
+            scanResult = true;
         }else if (computer_clipper.scan(coor)){
             scanResult = true;
-        }else if (computer_dinghy.scan(coor)){
+        }else if (computer_dinghy.scan(coor)) {
             scanResult = true;
-	      }else if (computer_submarine.scan(coor)){
-	          scanResult = false; /* Changed to false, so the submarine is undetectable by the scan feature*/
-        }else {
+        } else {
             scanResult = false;
         }
     }

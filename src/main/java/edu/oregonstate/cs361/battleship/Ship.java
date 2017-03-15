@@ -10,22 +10,21 @@ public class Ship {
     protected int length;
     protected Coordinate start;
     protected Coordinate end;
-    protected boolean stealth;
 
     public Ship(){
         name = "";
         length = 0;
         start = new Coordinate(0,0);
         end = new Coordinate(0, 0);
-        stealth = false;
+
     }
 
-    public Ship(String n, int l,Coordinate s, Coordinate e, boolean b) {
+    public Ship(String n, int l,Coordinate s, Coordinate e) {
         name = n;
         length = l;
         start = s;
         end = e;
-        stealth = b;
+//        stealth = b;
     }
 
     public void setLocation(Coordinate s, Coordinate e) {
@@ -109,24 +108,20 @@ public class Ship {
     }
 
     public boolean scan(Coordinate coor) {
-        if (stealth == true) {
-            return false;
-        }else {
-            if (covers(coor)) {
-                return true;
-            }
-            if (covers(new Coordinate(coor.getAcross() - 1, coor.getDown()))) {
-                return true;
-            }
-            if (covers(new Coordinate(coor.getAcross() + 1, coor.getDown()))) {
-                return true;
-            }
-            if (covers(new Coordinate(coor.getAcross(), coor.getDown() - 1))) {
-                return true;
-            }
-            if (covers(new Coordinate(coor.getAcross(), coor.getDown() + 1))) {
-                return true;
-            }
+        if (covers(coor)) {
+            return true;
+        }
+        if(covers(new Coordinate(coor.getAcross()-1,coor.getDown()))){
+            return true;
+        }
+        if(covers(new Coordinate(coor.getAcross()+1,coor.getDown()))){
+            return true;
+        }
+        if(covers(new Coordinate(coor.getAcross(),coor.getDown()-1))){
+            return true;
+        }
+        if(covers(new Coordinate(coor.getAcross(),coor.getDown()+1))){
+            return true;
         }
         return false;
     }
