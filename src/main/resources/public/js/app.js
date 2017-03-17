@@ -1,18 +1,13 @@
 var gameModel;
+var currentChosenRow = 0;
+var currentChosenCol = 0;
+var scanFlag = 0;
 
 $( document ).ready(function() {
-	// Handler for .ready() called.
 	$.getJSON("model", function( json ) {
 		gameModel = json;
 		console.log( "JSON Data: " + json );
 	});
-
-	/*//function blink() {
-		var f = document.getElementById('blink');
-		setInterval(function() {
-			f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
-		}, 1000);
-	//}*/
 });
 
 
@@ -21,8 +16,6 @@ function placeShip() {
 	console.log($( "#rowSelec" ).val());
 	console.log($( "#colSelec" ).val());
 	console.log($( "#orientationSelec" ).val());
-
-	//var menuId = $( "ul.nav" ).first().attr( "id" );
 	var request = $.ajax({
 		url: "/placeShip/"+$( "#shipSelec" ).val()+"/"+$( "#rowSelec" ).val()+"/"+$( "#colSelec" ).val()+"/"+$( "#orientationSelec" ).val(),
 		method: "post",
@@ -31,7 +24,6 @@ function placeShip() {
 		dataType: "json"
 	});
 	request.done(function( currModel ) {
-		//console.log(currModel + gameModel);
 		displayShipState(currModel);
 		gameModel = currModel;
 	});
@@ -45,7 +37,6 @@ function placeShip() {
 function fire(){
  console.log($( "#rowFire" ).val());
  console.log($( "#colFire" ).val());
-//var menuId = $( "ul.nav" ).first().attr( "id" );
 	var request = $.ajax({
 		url: "/fire/"+$( "#rowFire" ).val()+"/"+$( "#colFire" ).val(),
 		method: "post",
@@ -62,6 +53,30 @@ function fire(){
 	request.fail(function( jqXHR, textStatus ) {
 		alert( "Request failed: " + textStatus );
 	});
+
+}
+
+
+function difficulty(){
+    var diff = 'easy';
+    var request = $.ajax({
+    url: "/difficulty/"+ diff,
+    method: "post",
+    data: JSON.stringify(gameModel),
+	contentType: "application/json; charset=utf-8",
+    dataType: "json"
+    });
+
+    //document.getElementById(difficultyButton).disabled = true;
+
+   request.done(function( currModel ){
+        displayScanState(currModel);
+        gameModel = currModel;
+    });
+
+    request.fail(function( jqXHR, textStatus ) {
+     alert( "Request failed: " + textStatus );
+    });
 
 }
 
@@ -95,15 +110,11 @@ function log(logContents){
 function displayShipState(gameModel){
 	displayShip(gameModel.aircraftCarrier);
 	displayShip(gameModel.battleship);
-	/*displayShip(gameModel.cruiser);
-	displayShip(gameModel.destroyer);*/
 	displayShip(gameModel.clipper);
 	displayShip(gameModel.dinghy);
 	displayShip(gameModel.submarine);
 }
 function displayFireState(gameModel){
-	//$( '#MyBoard td'  ).css("background-color", "blue");
-	//$( '#TheirBoard td'  ).css("background-color", "green");
 
 	for (var i = 0; i < gameModel.computerMisses.length; i++) {
 	   $( '#TheirBoard #' + gameModel.computerMisses[i].Across + '_' + gameModel.computerMisses[i].Down ).css("background-color", "black");
@@ -163,14 +174,3 @@ function theirCoord(x, y){
 	console.log("x: " + x + ", y: " + y);
 }
 
-/*/testing to add coordinates clicked to fire selection
-document.addEventListener('click', whereClick);
-
-function whereClick(event){
-    console.log(event.target);
-}
-
-function whereClick(){
-    var tile = document.getElementsByTagName("TD");
-    document.getElementById("demo").innerHTML = tile[1].innerHTML;
-}*/
