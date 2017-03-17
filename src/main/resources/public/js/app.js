@@ -13,8 +13,48 @@ $( document ).ready(function() {
 			f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
 		}, 1000);
 	//}*/
+	//var background = document.createElement("div");
 });
 
+/*function openMenu(background){
+	background.style.background-color = "rgba(255, 255, 255, 0.5)";
+	background.style.width = "100%";
+	background.style.height = "140%";
+	background.style.position = "absolute";
+	
+	var easyDiv = document.createElement("div");
+	var hardDiv = document.createElement("div");
+	easyDiv.style.margin-right = "20%";
+	easyDiv.style.margin-left = "20%";
+	hardDiv.style.margin-right = "20%";
+	hardDiv.style.margin-left = "20%";
+	
+	var easyImage = document.createElement("img");
+	var hardImage = document.createElement("img");
+	easyImage.src="css/easy.jpg";
+	hardImage.src="css/hard.jpg";
+	
+	var easyBtn = document.createElement("button"); // Create a <button> element
+	var hardBtn = document.createElement("button");
+	
+	var easyText = document.createTextNode("Easy"); // Create a text node
+	var hardText = document.createTextNode("Hard");
+	
+	easyBtn.appendChild(easyText); //Append the text to <button>
+	hardBtn.appendChild(hardText);
+	
+	document.body.appendChild(easyBtn); //Append <button> to <body>
+	document.body.appendChild(hardBtn);
+	
+	document.body.appendChild(background);
+}*/
+function closeMenu(){
+	var easyHard = document.getElementById("easyHard");
+	easyHard.style.display = "none";
+}
+function difficulty(diff){
+	closeMenu();
+}
 
 function placeShip() {
 	console.log($( "#shipSelec" ).val());
@@ -41,6 +81,24 @@ function placeShip() {
 	});
 }
 
+function updateCoordinateInformation(row, col){
+
+    //Update the view with the most recent coordinates
+    document.getElementById("chosenP2").removeAttribute("hidden");
+    document.getElementById("chosenRowSpan").innerHTML = row;
+    currentChosenRow = row;
+    document.getElementById("chosenColSpan").innerHTML = col;
+    currentChosenCol = col;
+
+    //Create correct strings for URLs
+    var fireString = "chosenFireFunc('/fire/" + row + "/" + col + "')";
+    var scanString = "chosenScanFunc('/scan/" + row + "/" + col + "')";
+
+    //Update onclicks
+    document.getElementById('chosenFire').setAttribute('onclick', fireString);
+    document.getElementById('chosenScan').setAttribute('onclick', scanString);
+
+}
 
 function fire(){
  console.log($( "#rowFire" ).val());
@@ -139,11 +197,11 @@ function displayShip(ship){
 	if(startCoordAcross > 0){
 		if(startCoordAcross == endCoordAcross){
 			for (i = startCoordDown; i <= endCoordDown; i++) {
-				$( '#MyBoard #'+startCoordAcross+'_'+i  ).css("background-color", "yellow");
+				$( '#MyBoard #'+startCoordAcross+'_'+i  ).css("background-color", "lightgray");
 			}
 		} else {
 			for (i = startCoordAcross; i <= endCoordAcross; i++) {
-				$( '#MyBoard #'+i+'_'+startCoordDown  ).css("background-color", "yellow");
+				$( '#MyBoard #'+i+'_'+startCoordDown  ).css("background-color", "lightgray");
 			}
 		}
 	}
