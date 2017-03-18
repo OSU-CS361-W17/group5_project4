@@ -1,68 +1,20 @@
 var gameModel;
+var currentChosenRow = 0;
+var currentChosenCol = 0;
+var scanFlag = 0;
 
 $( document ).ready(function() {
-	// Handler for .ready() called.
 	$.getJSON("model", function( json ) {
 		gameModel = json;
 		console.log( "JSON Data: " + json );
 	});
-
-	/*//function blink() {
-		var f = document.getElementById('blink');
-		setInterval(function() {
-			f.style.display = (f.style.display == 'none' ? 'inline' : 'none');
-		}, 1000);
-	//}*/
-	//var background = document.createElement("div");
 });
-
-/*function openMenu(background){
-	background.style.background-color = "rgba(255, 255, 255, 0.5)";
-	background.style.width = "100%";
-	background.style.height = "140%";
-	background.style.position = "absolute";
-	
-	var easyDiv = document.createElement("div");
-	var hardDiv = document.createElement("div");
-	easyDiv.style.margin-right = "20%";
-	easyDiv.style.margin-left = "20%";
-	hardDiv.style.margin-right = "20%";
-	hardDiv.style.margin-left = "20%";
-	
-	var easyImage = document.createElement("img");
-	var hardImage = document.createElement("img");
-	easyImage.src="css/easy.jpg";
-	hardImage.src="css/hard.jpg";
-	
-	var easyBtn = document.createElement("button"); // Create a <button> element
-	var hardBtn = document.createElement("button");
-	
-	var easyText = document.createTextNode("Easy"); // Create a text node
-	var hardText = document.createTextNode("Hard");
-	
-	easyBtn.appendChild(easyText); //Append the text to <button>
-	hardBtn.appendChild(hardText);
-	
-	document.body.appendChild(easyBtn); //Append <button> to <body>
-	document.body.appendChild(hardBtn);
-	
-	document.body.appendChild(background);
-}*/
-function closeMenu(){
-	var easyHard = document.getElementById("easyHard");
-	easyHard.style.display = "none";
-}
-function difficulty(diff){
-	closeMenu();
-}
 
 function placeShip() {
 	console.log($( "#shipSelec" ).val());
 	console.log($( "#rowSelec" ).val());
 	console.log($( "#colSelec" ).val());
 	console.log($( "#orientationSelec" ).val());
-
-	//var menuId = $( "ul.nav" ).first().attr( "id" );
 	var request = $.ajax({
 		url: "/placeShip/"+$( "#shipSelec" ).val()+"/"+$( "#rowSelec" ).val()+"/"+$( "#colSelec" ).val()+"/"+$( "#orientationSelec" ).val(),
 		method: "post",
@@ -71,7 +23,6 @@ function placeShip() {
 		dataType: "json"
 	});
 	request.done(function( currModel ) {
-		//console.log(currModel + gameModel);
 		displayShipState(currModel);
 		gameModel = currModel;
 	});
@@ -103,7 +54,6 @@ function updateCoordinateInformation(row, col){
 function fire(){
  console.log($( "#rowFire" ).val());
  console.log($( "#colFire" ).val());
-//var menuId = $( "ul.nav" ).first().attr( "id" );
 	var request = $.ajax({
 		url: "/fire/"+$( "#rowFire" ).val()+"/"+$( "#colFire" ).val(),
 		method: "post",
@@ -121,6 +71,31 @@ function fire(){
 		alert( "Request failed: " + textStatus );
 	});
 
+}
+
+function closeMenu(){
+	var easyHard = document.getElementById("easyHard");
+	easyHard.style.display = "none";
+}
+
+function difficulty(diff){
+    var request = $.ajax({
+    url: "/difficulty/"+ diff,
+    method: "post",
+    data: JSON.stringify(gameModel),
+	contentType: "application/json; charset=utf-8",
+    dataType: "json"
+    });
+
+   request.done(function( currModel ){
+        displayScanState(currModel);
+        gameModel = currModel;
+    });
+
+    request.fail(function( jqXHR, textStatus ) {
+     alert( "Request failed: " + textStatus );
+    });
+    closeMenu();
 }
 
 function scan(){
@@ -142,7 +117,6 @@ function scan(){
     request.fail(function( jqXHR, textStatus ) {
      alert( "Request failed: " + textStatus );
     });
-
 }
 
 
@@ -153,15 +127,12 @@ function log(logContents){
 function displayShipState(gameModel){
 	displayShip(gameModel.aircraftCarrier);
 	displayShip(gameModel.battleship);
-	/*displayShip(gameModel.cruiser);
-	displayShip(gameModel.destroyer);*/
 	displayShip(gameModel.clipper);
 	displayShip(gameModel.dinghy);
 	displayShip(gameModel.submarine);
 }
+
 function displayFireState(gameModel){
-	//$( '#MyBoard td'  ).css("background-color", "blue");
-	//$( '#TheirBoard td'  ).css("background-color", "green");
 
 	for (var i = 0; i < gameModel.computerMisses.length; i++) {
 	   $( '#TheirBoard #' + gameModel.computerMisses[i].Across + '_' + gameModel.computerMisses[i].Down ).css("background-color", "black");
@@ -177,6 +148,7 @@ function displayFireState(gameModel){
 	   $( '#MyBoard #' + gameModel.playerHits[i].Across + '_' + gameModel.playerHits[i].Down ).css("background-color", "red");
 	}
 }
+
 function displayScanState(gameModel){
 	if(gameModel.scanResult){
 		alert("Scan found at least one Ship")
@@ -206,11 +178,13 @@ function displayShip(ship){
 		}
 	}
 }
+
 function myCoord(x, y){
 	document.getElementById('rowSelec').selectedIndex = (x - 1);
 	document.getElementById('colSelec').selectedIndex = (y - 1);
 	//console.log("x: " + x + ", y: " + y);
 }
+
 function theirCoord(x, y){
 	//var rowFire = document.getElementById('rowFire');
 	//var colFire = document.getElementById('colFire');
@@ -221,14 +195,3 @@ function theirCoord(x, y){
 	console.log("x: " + x + ", y: " + y);
 }
 
-/*/testing to add coordinates clicked to fire selection
-document.addEventListener('click', whereClick);
-
-function whereClick(event){
-    console.log(event.target);
-}
-
-function whereClick(){
-    var tile = document.getElementsByTagName("TD");
-    document.getElementById("demo").innerHTML = tile[1].innerHTML;
-}*/
