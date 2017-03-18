@@ -22,10 +22,12 @@ public class Main {
         post("/scan/:row/:col", (req, res) -> scan(req));
         //This will listen to POST requests and expects to receive a game model, as well as location to place the ship
         post("/placeShip/:id/:row/:col/:orientation", (req, res) -> placeShip(req));
+        //This will listen to POST requests and expects to receive a game model, as well as location to place the ship
+        post("/difficulty/:level", (req, res) -> difficultyComputer(req));
     }
 
     //This function returns a new model
-    private static String newModel() {
+    private static String newModel(){
         BattleshipModel bm = new BattleshipModel();
         Gson gson = new Gson();
         return gson.toJson(bm);
@@ -52,9 +54,6 @@ public class Main {
         String col = req.params("col");
         String orientation = req.params("orientation");
         currModel = currModel.placeShip(id,row,col,orientation);
-        //testing
-        Ship clipper = currModel.getShip("clipper");
-        System.out.println("clipper: " + clipper.start.getAcross() + "," + clipper.start.getDown());
         Gson gson = new Gson();
         return gson.toJson(currModel);
     }
@@ -86,6 +85,27 @@ public class Main {
         return gson.toJson(currModel);
     }
 
+    private static String difficultyComputer(Request req) {
+
+//        private static String newModel(){
+//            BattleshipModel bm = new BattleshipModel();
+//            Gson gson = new Gson();
+//            return gson.toJson(bm);
+        BattleshipModel currModel = getModelFromReq(req);
+        String level = req.params("level");
+        System.out.println("level "+ level);
+        //Computer easyComputer = new Computer();
+        if(level.equals("easy")){
+            currModel = currModel.placeComputerEasy();
+        }
+        else{
+            currModel = currModel.placeComputerHard();
+        }
+
+
+        Gson gson = new Gson();
+        return gson.toJson(currModel);
+    }
 
 
 }
