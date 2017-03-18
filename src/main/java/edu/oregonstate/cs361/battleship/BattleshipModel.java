@@ -1,7 +1,6 @@
 package edu.oregonstate.cs361.battleship;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -15,26 +14,31 @@ public class BattleshipModel {
     private CivilianShip clipper = new CivilianShip("clipper", 3, new Coordinate(0, 0), new Coordinate(0, 0));
     private CivilianShip dinghy = new CivilianShip("dinghy", 1, new Coordinate(0, 0), new Coordinate(0, 0));
 
-    private MilitaryShip computer_aircraftCarrier = new MilitaryShip(false,"Computer_AircraftCarrier",5, new Coordinate(2,2),new Coordinate(2,6));
-    private MilitaryShip computer_battleship = new MilitaryShip(true,"Computer_Battleship",4, new Coordinate(2,8),new Coordinate(5,8));
-    private MilitaryShip computer_submarine = new MilitaryShip(true,"Computer_Submarine",2, new Coordinate(9,6),new Coordinate(9,7));
-    private CivilianShip computer_clipper = new CivilianShip("Computer_Clipper", 3, new Coordinate(5, 1), new Coordinate(5, 3));
-    private CivilianShip computer_dinghy = new CivilianShip("Computer_Dinghy", 1, new Coordinate(10, 10), new Coordinate(10, 10));
+    private MilitaryShip computer_aircraftCarrier = new MilitaryShip(false,"Computer_AircraftCarrier",5, new Coordinate(0,0),new Coordinate(0,0));
+    private MilitaryShip computer_battleship = new MilitaryShip(true,"Computer_Battleship",4, new Coordinate(0,0),new Coordinate(0,0));
+    private MilitaryShip computer_submarine = new MilitaryShip(true,"Computer_Submarine",2, new Coordinate(0,0),new Coordinate(0,0));
+    private CivilianShip computer_clipper = new CivilianShip("Computer_Clipper", 3, new Coordinate(0, 0), new Coordinate(0, 0));
+    private CivilianShip computer_dinghy = new CivilianShip("Computer_Dinghy", 1, new Coordinate(0, 0), new Coordinate(0, 0));
+
+
 
     ArrayList<Coordinate> playerHits;
     private ArrayList<Coordinate> playerMisses;
     ArrayList<Coordinate> computerHits;
     private ArrayList<Coordinate> computerMisses;
+
     //adopted from group 20
     ArrayList<Coordinate> shipSquares;
 
+    //global variables
     boolean scanResult = false;
     boolean overlapResult = false;
     boolean offBoard = false;
-
+    //String level = "";
 
 
     public BattleshipModel() {
+        //diffLevel = level;
         playerHits = new ArrayList<>();
         playerMisses= new ArrayList<>();
         computerHits = new ArrayList<>();
@@ -65,6 +69,35 @@ public class BattleshipModel {
         }
     }
 
+    public BattleshipModel placeComputerEasy(String level){
+
+//        if(level.equals("easy")){
+//            System.out.println("in place computer(bsmod): " + level);
+//        }
+        this.computer_aircraftCarrier.setLocation(new Coordinate(1,1), new Coordinate(1,5));
+        shipSquares.addAll(this.computer_aircraftCarrier.getShipSquares());
+        this.computer_battleship.setLocation(new Coordinate(2,1), new Coordinate(2,4));
+        shipSquares.addAll(this.computer_battleship.getShipSquares());
+        this.computer_submarine.setLocation(new Coordinate(3,1), new Coordinate(3,2));
+        shipSquares.addAll(this.computer_submarine.getShipSquares());
+        this.computer_clipper.setLocation(new Coordinate(4,1), new Coordinate(4,3));
+        shipSquares.addAll(this.computer_clipper.getShipSquares());
+        this.computer_dinghy.setLocation(new Coordinate(5,1), new Coordinate(5,1));
+        shipSquares.addAll(this.computer_dinghy.getShipSquares());
+        return this;
+    }
+
+    public BattleshipModel placeComputerHard(String level){
+
+        if(level.equals("hard")){
+            System.out.println("in place computer(bsmod): " + level);
+            //placeComputerShips(sendLevel);
+        }
+
+
+        return null;
+    }
+
     public BattleshipModel placeShip(String shipName, String row, String col, String orientation) {
         int rowint = Integer.parseInt(row);
         int colInt = Integer.parseInt(col);
@@ -74,7 +107,6 @@ public class BattleshipModel {
         overlapResult = false;
         offBoard = false;
         if(this.getShip(shipName).alreadyPlaced()){
-
             shipSquares.removeAll(this.getShip(shipName).getShipSquares());
         }
         if(orientation.equals("horizontal")){
@@ -163,6 +195,7 @@ public class BattleshipModel {
         Coordinate coor = new Coordinate(randRow,randCol);
         playerShot(coor);
     }
+
     //adopted from group 20
     void playerShot(Coordinate coor) {
         if(playerMisses.contains(coor)){
@@ -201,7 +234,8 @@ public class BattleshipModel {
         }
     }
 
-    public boolean getScanResult() {
-        return scanResult;
-    }
+
+//    public boolean getScanResult() {
+//        return scanResult;
+//    }
 }
