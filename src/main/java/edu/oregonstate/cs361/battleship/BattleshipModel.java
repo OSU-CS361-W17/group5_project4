@@ -8,6 +8,8 @@ import java.util.Random;
  */
 public class BattleshipModel {
 
+    private Random rand = new Random();
+
     private MilitaryShip aircraftCarrier = new MilitaryShip(false,"aircraftcarrier",5, new Coordinate(0,0),new Coordinate(0,0));
     private MilitaryShip battleship = new MilitaryShip(true,"battleship",4, new Coordinate(0,0),new Coordinate(0,0));
     private MilitaryShip submarine = new MilitaryShip(true,"submarine",2, new Coordinate(0,0),new Coordinate(0,0));
@@ -69,7 +71,7 @@ public class BattleshipModel {
         }
     }
 
-    public BattleshipModel placeComputerEasy(String level){
+    public BattleshipModel placeComputerEasy(){
 
 //        if(level.equals("easy")){
 //            System.out.println("in place computer(bsmod): " + level);
@@ -87,19 +89,60 @@ public class BattleshipModel {
         return this;
     }
 
-    public BattleshipModel placeComputerHard(String level){
+    public BattleshipModel placeComputerHard(){
+        int i, //Iterator
+                j, //Iterator
+                k, //Iterator for shipName array of Strings
+                rowInt,
+                colInt;
+        boolean or, //Boolean for acquiring random orientation
+        overlapResult = false,
+        offBoard = false;
+        String orientation;
+        String[] shipName = new String[]{"aircraftcarrier", "battleship", "clipper", "submarine", "dinghy"};
 
-        if(level.equals("hard")){
-            System.out.println("in place computer(bsmod): " + level);
-            //placeComputerShips(sendLevel);
+        for(i=0, k=0; i<100; i++){
+            or = rand.nextBoolean();
+            rowInt = rand.nextInt(10) + 1;
+            colInt = rand.nextInt(10) + 1;
+            if(or)
+                orientation = "vertical";
+            else
+                orientation = "horizontal";
+
+            if(orientation.equals("horizontal")){
+                    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
+            }else{
+                //vertical
+                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
+            }
+
+            for(j = 0; j < this.getShip(shipName[k]).getShipSquares().size(); j++){
+                if(this.getShip(shipName[k]).getShipSquares().get(i).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(i).getDown() > 10) {
+                    offBoard = true;
+                    //"unplace" ship
+                    this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
+                    j = 1000;
+                }
+                // if master list already contains one of the new ship's squares, it's an overlap!
+                if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(i))) {
+                    overlapResult = true;
+                    //"unplace" ship
+                    this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
+                    j = 1000;
+                }
+            }
+            // if no overlap + not off the board, leave the ship alone and add its squares to the master list
+            if(!(offBoard || overlapResult)) {
+                shipSquares.addAll(this.getShip(shipName[k]).getShipSquares());
+                k++;
+            }
         }
-
-
-        return null;
+        return this;
     }
 
     public BattleshipModel placeShip(String shipName, String row, String col, String orientation) {
-        int rowint = Integer.parseInt(row);
+        int rowInt = Integer.parseInt(row);
         int colInt = Integer.parseInt(col);
 
         /*adopted from Group 20*/
@@ -111,36 +154,36 @@ public class BattleshipModel {
         }
         if(orientation.equals("horizontal")){
             if(shipName.equalsIgnoreCase("submarine")) {
-                this.getShip(shipName).setLocation(new Coordinate(rowint, colInt), new Coordinate(rowint, colInt+1));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt+1));
             }
             if (shipName.equalsIgnoreCase("aircraftcarrier")) {
-                this.getShip(shipName).setLocation(new Coordinate(rowint,colInt),new Coordinate(rowint,colInt+4));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt,colInt),new Coordinate(rowInt,colInt+4));
             }
             if(shipName.equalsIgnoreCase("battleship")) {
-                this.getShip(shipName).setLocation(new Coordinate(rowint,colInt),new Coordinate(rowint,colInt+3));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt,colInt),new Coordinate(rowInt,colInt+3));
             }
             if(shipName.equalsIgnoreCase( "clipper")){
-                this.getShip(shipName).setLocation(new Coordinate(rowint, colInt), new Coordinate(rowint, colInt+2));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt+2));
             }
             if(shipName.equalsIgnoreCase("dinghy")){
-                this.getShip(shipName).setLocation(new Coordinate(rowint, colInt), new Coordinate(rowint, colInt));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
             }
         }else{
             //vertical
             if (shipName.equalsIgnoreCase("aircraftcarrier")) {
-                this.getShip(shipName).setLocation(new Coordinate(rowint,colInt),new Coordinate(rowint+4,colInt));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt,colInt),new Coordinate(rowInt+4,colInt));
             }
             if(shipName.equalsIgnoreCase("battleship")) {
-                this.getShip(shipName).setLocation(new Coordinate(rowint,colInt),new Coordinate(rowint+3,colInt));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt,colInt),new Coordinate(rowInt+3,colInt));
             }
             if(shipName.equalsIgnoreCase("submarine")) {
-                this.getShip(shipName).setLocation(new Coordinate(rowint, colInt), new Coordinate(rowint+1, colInt));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt+1, colInt));
             }
             if(shipName.equalsIgnoreCase( "clipper")){
-                this.getShip(shipName).setLocation(new Coordinate(rowint, colInt), new Coordinate(rowint+2, colInt));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt+2, colInt));
             }
             if(shipName.equalsIgnoreCase("dinghy")){
-                this.getShip(shipName).setLocation(new Coordinate(rowint, colInt), new Coordinate(rowint, colInt));
+                this.getShip(shipName).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
             }
         }
 

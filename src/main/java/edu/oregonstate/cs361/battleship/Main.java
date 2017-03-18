@@ -96,11 +96,10 @@ public class Main {
         System.out.println("level "+ level);
         //Computer easyComputer = new Computer();
         if(level.equals("easy")){
-            for(int x = 0; x < 5; x++)
-            currModel = currModel.placeComputerEasy(level);
+            currModel = currModel.placeComputerEasy();
         }
         else{
-            currModel = currModel.placeComputerHard(level);
+            currModel = currModel.placeComputerHard();
         }
 
 
