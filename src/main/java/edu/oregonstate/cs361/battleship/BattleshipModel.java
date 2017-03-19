@@ -98,42 +98,39 @@ public class BattleshipModel {
         boolean or; //Boolean for acquiring random orientation
         overlapResult = false;
         offBoard = false;
-        String[] shipName = new String[]{"Computer_AircraftCarrier", "Computer_Battleship", "Computer_Clipper", "Computer_Submarine", "Computer_Dinghy"};
+        String[] shipName = new String[]{"computer_aircraftcarrier", "battleship", "clipper", "submarine", "dinghy"};
 
         for(i=0, k=0; i<100; i++){
             or = rand.nextBoolean();
-            if(or){//Horizontal
-                rowInt = rand.nextInt(10) + 5 - k;
-                colInt = rand.nextInt(10) + 1;
-            }
-            else {//Vertical
-                rowInt = rand.nextInt(10) + 1;
-                colInt = rand.nextInt(10) + 5 - k;
+            rowInt = rand.nextInt(10) + 1;
+            colInt = rand.nextInt(10) + 1;
+            if(or)
+                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
+            else{
+                //vertical
+                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
             }
 
             for(j = 0; j < this.getShip(shipName[k]).getShipSquares().size(); j++){
-                if(this.getShip(shipName[k]).getShipSquares().get(i).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
+                if(this.getShip(shipName[k]).getShipSquares().get(i).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(i).getDown() > 10) {
                     offBoard = true;
                     //"unplace" ship
-                    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
+                    this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
                     j = 1000;
                 }
                 // if master list already contains one of the new ship's squares, it's an overlap!
-                if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(j))) {
+                if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(i))) {
                     overlapResult = true;
                     //"unplace" ship
-                    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
+                    this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
                     j = 1000;
                 }
             }
             // if no overlap + not off the board, leave the ship alone and add its squares to the master list
-            if(!(offBoard || overlapResult)) {
-                k++;
-                System.out.println("The end of hard is being reached.");
-                //return this;
-            }
-            else
+            if((offBoard || overlapResult)) {
                 shipSquares.addAll(this.getShip(shipName[k]).getShipSquares());
+                k++;
+            }
         }
         return this;
     }
