@@ -95,12 +95,12 @@ public class Main {
         String level = req.params("level");
         System.out.println("level "+ level);
         //Computer easyComputer = new Computer();
-        if(level.equals("easy")){
+        //if(level.equals("easy")){
             currModel = currModel.placeComputerEasy();
-        }
-        else{
-            currModel = currModel.placeComputerHard();
-        }
+        //}
+        //if(level.equals("hard")){
+        //    currModel = currModel.placeComputerHard();
+        //}
 
 
         Gson gson = new Gson();

@@ -74,7 +74,7 @@ public class BattleshipModel {
     public BattleshipModel placeComputerEasy(){
 
 //        if(level.equals("easy")){
-//            System.out.println("in place computer(bsmod): " + level);
+            System.out.println("in place computer easy(bsmod)");
 //        }
         this.computer_aircraftCarrier.setLocation(new Coordinate(1,1), new Coordinate(1,5));
         shipSquares.addAll(this.computer_aircraftCarrier.getShipSquares());
@@ -90,42 +90,35 @@ public class BattleshipModel {
     }
 
     public BattleshipModel placeComputerHard(){
-        int i, //Iterator
-                j, //Iterator
-                k, //Iterator for shipName array of Strings
-                rowInt,
-                colInt;
-        boolean or, //Boolean for acquiring random orientation
-        overlapResult = false,
+
+        System.out.println("in place computer hard(bsmod) ");
+
+        int i, j, k, rowInt, colInt;
+        boolean or;
+        overlapResult = false;
         offBoard = false;
-        String orientation;
-        String[] shipName = new String[]{"aircraftcarrier", "battleship", "clipper", "submarine", "dinghy"};
+        String[] shipName = new String[]{"Computer_AircraftCarrier", "Computer_Battleship", "Computer_Clipper", "Computer_Submarine", "Computer_Dinghy"};
 
         for(i=0, k=0; i<100; i++){
             or = rand.nextBoolean();
             rowInt = rand.nextInt(10) + 1;
             colInt = rand.nextInt(10) + 1;
             if(or)
-                orientation = "vertical";
-            else
-                orientation = "horizontal";
-
-            if(orientation.equals("horizontal")){
-                    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
-            }else{
+                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
+            else{
                 //vertical
-                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt));
+                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
             }
 
             for(j = 0; j < this.getShip(shipName[k]).getShipSquares().size(); j++){
-                if(this.getShip(shipName[k]).getShipSquares().get(i).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(i).getDown() > 10) {
+                if(this.getShip(shipName[k]).getShipSquares().get(j).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
                     offBoard = true;
                     //"unplace" ship
                     this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
                     j = 1000;
                 }
                 // if master list already contains one of the new ship's squares, it's an overlap!
-                if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(i))) {
+                if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(j))) {
                     overlapResult = true;
                     //"unplace" ship
                     this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
@@ -227,7 +220,7 @@ public class BattleshipModel {
             computerMisses.add(coor);
         }
     }
-/*	MOVED AND REWRITTEN IN EasyComputer.java
+
     public void shootAtPlayer() {
         int max = 10;
         int min = 1;
@@ -238,7 +231,7 @@ public class BattleshipModel {
         Coordinate coor = new Coordinate(randRow,randCol);
         playerShot(coor);
     }
-*/
+
     //adopted from group 20
     void playerShot(Coordinate coor) {
         if(playerMisses.contains(coor)){
