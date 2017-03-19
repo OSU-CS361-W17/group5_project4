@@ -25,7 +25,7 @@ public class EasyComputer extends BattleshipModel{
         this.computer_dinghy.setLocation(new Coordinate(5,1), new Coordinate(5,1));
         shipSquares.addAll(this.computer_dinghy.getShipSquares());
         return this;
-    }*/
+    }
     public BattleshipModel computerPlaceShip() {
         this.placeShip("aircraftcarrier", "1", "1", "horizontal");
         this.placeShip("battleship", "3", "7", "vertical");
@@ -33,5 +33,5 @@ public class EasyComputer extends BattleshipModel{
         this.placeShip("submarine", "8", "2", "vertical");
         this.placeShip("dinghy", "9", "7", "horizontal");
         return this;
-    }
+    }*/
 }
