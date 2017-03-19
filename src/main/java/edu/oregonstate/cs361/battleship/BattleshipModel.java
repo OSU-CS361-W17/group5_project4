@@ -227,7 +227,7 @@ public class BattleshipModel {
             computerMisses.add(coor);
         }
     }
-
+/*	MOVED AND REWRITTEN IN EasyComputer.java
     public void shootAtPlayer() {
         int max = 10;
         int min = 1;
@@ -238,7 +238,7 @@ public class BattleshipModel {
         Coordinate coor = new Coordinate(randRow,randCol);
         playerShot(coor);
     }
-
+*/
     //adopted from group 20
     void playerShot(Coordinate coor) {
         if(playerMisses.contains(coor)){
