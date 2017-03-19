@@ -79,6 +79,7 @@ function closeMenu(){
 }
 
 function difficulty(diff){
+    //closeMenu();
     var request = $.ajax({
     url: "/difficulty/"+ diff,
     method: "post",
@@ -88,14 +89,14 @@ function difficulty(diff){
     });
 
    request.done(function( currModel ){
-        displayScanState(currModel);
         gameModel = currModel;
+        displayShipState(gameModel);
     });
 
     request.fail(function( jqXHR, textStatus ) {
-     alert( "Request failed: " + textStatus );
+		console.log( "Request failed: " + textStatus );
     });
-    closeMenu();
+	console.log("Request Data: " + request.data + ", Request URL: " + request.url);
 }
 
 function scan(){
