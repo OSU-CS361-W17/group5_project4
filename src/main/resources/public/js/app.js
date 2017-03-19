@@ -79,7 +79,7 @@ function closeMenu(){
 }
 
 function difficulty(diff){
-    //closeMenu();
+    closeMenu();
     var request = $.ajax({
     url: "/difficulty/"+ diff,
     method: "post",

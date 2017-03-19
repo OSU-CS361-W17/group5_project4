@@ -41,10 +41,9 @@ public class Ship {
             return true;
         }
         // if ship's start and end coordinates share the same Down (col), must be vertical
-        else if (start.getDown() == end.getDown()) {
+        else {
             return false;
         }
-        return false;
     }
 
     /* this funct will only be called when the user attempts to assign a ship a position with a starting coordinate
@@ -53,14 +52,14 @@ public class Ship {
     public ArrayList<Coordinate> getShipSquares() {
         ArrayList<Coordinate> shipSquares = new ArrayList<>();      // will hold all the placed ship's squares
 
-        // if this ship is horiz, loop horizontally to grab all its squares
+        // if this ship is horizontal, loop horizontally to grab all its squares
         if (this.isHorizontal()) {
             for (int i = start.getDown(); i < start.getDown() + length; i++) {
                 Coordinate square = new Coordinate(start.getAcross(), i);
                 shipSquares.add(square);
             }
         }
-        // otherwise if this ship is vert, loop vertically to grab all its squares
+        // otherwise if this ship is vertical, loop vertically to grab all its squares
         else {
             for (int i = start.getAcross(); i < start.getAcross() + length; i++) {
                 Coordinate square = new Coordinate(i, start.getDown());
