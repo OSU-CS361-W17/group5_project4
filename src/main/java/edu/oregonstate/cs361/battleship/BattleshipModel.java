@@ -92,7 +92,7 @@ public class BattleshipModel {
     public BattleshipModel placeComputerEasy(){
 
 //        if(level.equals("easy")){
-//            System.out.println("in place computer(bsmod): " + level);
+            System.out.println("in place computer easy(bsmod)");
 //        }
         this.computer_aircraftCarrier.setLocation(new Coordinate(1,1), new Coordinate(1,5));
         shipSquares.addAll(this.computer_aircraftCarrier.getShipSquares());
@@ -108,12 +108,14 @@ public class BattleshipModel {
     }
 
     public BattleshipModel placeComputerHard(){
-        int i, //Iterator
-                j, //Iterator
-                k, //Iterator for shipName array of Strings
-                rowInt,
-                colInt;
-        boolean or; //Boolean for acquiring random orientation
+
+        System.out.println("in place computer hard(bsmod) ");
+
+        int i, j, k, rowInt, colInt;
+        boolean or;
+        overlapResult = false;
+        offBoard = false;
+      
         String[] shipName = new String[]{"Computer_AircraftCarrier", "Computer_Battleship", "Computer_Clipper", "Computer_Submarine", "Computer_Dinghy"};
 
         for(i=0, k=0; k<5; i++){
@@ -122,26 +124,40 @@ public class BattleshipModel {
             or = rand.nextBoolean();
             rowInt = rand.nextInt(10) + 1;
             colInt = rand.nextInt(10) + 1;
-            System.out.println("I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
+          
+//            System.out.println("I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
             if(or) { //horizontal
                 System.out.println("2nd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
                 this.getComputerShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
             } else{ //vertical
                 System.out.println("3rd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
                 this.getComputerShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt + 4 - k, colInt));
+            //if(or)
+            //    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
+            //else{
+                //vertical
+            //    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
             }
             //this.getComputerShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
 
-            System.out.println("3rd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
+
+        //    System.out.println("3rd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
             for(j = 0; j < this.getComputerShip(shipName[k]).getShipSquares().size(); j++){
                 if(this.getComputerShip(shipName[k]).getShipSquares().get(j).getAcross() > 10 || this.getComputerShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
+
+       //     for(j = 0; j < this.getShip(shipName[k]).getShipSquares().size(); j++){
+       //         if(this.getShip(shipName[k]).getShipSquares().get(j).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
+  
                     offBoard = true;
                     //"unplace" ship
                     this.getComputerShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
                     j = 1000;
                 }
                 // if master list already contains one of the new ship's squares, it's an overlap!
+
                 if (shipSquares.contains(this.getComputerShip(shipName[k]).getShipSquares().get(j))) {
+                //if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(j))) {
+
                     overlapResult = true;
                     //"unplace" ship
                     this.getComputerShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));

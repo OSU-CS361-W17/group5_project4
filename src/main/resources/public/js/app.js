@@ -80,6 +80,30 @@ function closeMenu(){
 
 function difficulty(diff){
     closeMenu();
+
+//function easy(){
+//    var diff = 'easy';
+///    var request = $.ajax({
+//    url: "/difficulty/"+ diff,
+//    method: "post",
+//    data: JSON.stringify(gameModel),
+//	contentType: "application/json; charset=utf-8",
+//    dataType: "json"
+//    });
+
+//   request.done(function( currModel ){
+//        displayScanState(currModel);
+//        gameModel = currModel;
+//    });
+
+//    request.fail(function( jqXHR, textStatus ) {
+//     alert( "Request failed: " + textStatus );
+//    });
+//    closeMenu();
+//}
+
+//function hard(){
+    //var diff = 'hard';
     var request = $.ajax({
     url: "/difficulty/"+ diff,
     method: "post",

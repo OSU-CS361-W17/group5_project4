@@ -96,8 +96,14 @@ public class Main {
         else if(level.equals("hard")){
             currModel = currModel.placeComputerHard();
         }
-
-
+        //System.out.println("level "+ level);
+        //Computer easyComputer = new Computer();
+        //if(level.equals("easy")){
+        //    currModel = currModel.placeComputerEasy();
+        //}
+        //if(level.equals("hard")){
+        //    currModel = currModel.placeComputerHard();
+        //}
         Gson gson = new Gson();
         return gson.toJson(currModel);
     }
