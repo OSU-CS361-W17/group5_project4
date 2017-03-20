@@ -78,8 +78,32 @@ function closeMenu(){
 	easyHard.style.display = "none";
 }
 
-function easy(){
-    var diff = 'easy';
+function difficulty(diff){
+    closeMenu();
+
+//function easy(){
+//    var diff = 'easy';
+///    var request = $.ajax({
+//    url: "/difficulty/"+ diff,
+//    method: "post",
+//    data: JSON.stringify(gameModel),
+//	contentType: "application/json; charset=utf-8",
+//    dataType: "json"
+//    });
+
+//   request.done(function( currModel ){
+//        displayScanState(currModel);
+//        gameModel = currModel;
+//    });
+
+//    request.fail(function( jqXHR, textStatus ) {
+//     alert( "Request failed: " + textStatus );
+//    });
+//    closeMenu();
+//}
+
+//function hard(){
+    //var diff = 'hard';
     var request = $.ajax({
     url: "/difficulty/"+ diff,
     method: "post",
@@ -89,35 +113,14 @@ function easy(){
     });
 
    request.done(function( currModel ){
-        displayScanState(currModel);
         gameModel = currModel;
+        displayShipState(gameModel);
     });
 
     request.fail(function( jqXHR, textStatus ) {
-     alert( "Request failed: " + textStatus );
+		console.log( "Request failed: " + textStatus );
     });
-    closeMenu();
-}
-
-function hard(){
-    var diff = 'hard';
-    var request = $.ajax({
-    url: "/difficulty/"+ diff,
-    method: "post",
-    data: JSON.stringify(gameModel),
-	contentType: "application/json; charset=utf-8",
-    dataType: "json"
-    });
-
-   request.done(function( currModel ){
-        displayScanState(currModel);
-        gameModel = currModel;
-    });
-
-    request.fail(function( jqXHR, textStatus ) {
-     alert( "Request failed: " + textStatus );
-    });
-    closeMenu();
+	console.log("Request Data: " + request.data + ", Request URL: " + request.url);
 }
 
 function scan(){

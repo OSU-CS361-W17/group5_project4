@@ -65,8 +65,26 @@ public class BattleshipModel {
         }
         if(shipName.equalsIgnoreCase("dinghy" )) {
             return this.dinghy;
+        }else{
+            return null;
         }
-        else {
+    }
+    public Ship getComputerShip(String shipName) {
+        if (shipName.equalsIgnoreCase("computer_aircraftcarrier")) {
+            return this.computer_aircraftCarrier;
+        }
+        if (shipName.equalsIgnoreCase("computer_battleship")) {
+            return this.computer_battleship;
+        }
+        if (shipName.equalsIgnoreCase("computer_submarine")) {
+            return this.computer_submarine;
+        }
+        if (shipName.equalsIgnoreCase("computer_clipper")) {
+            return this.computer_clipper;
+        }
+        if (shipName.equalsIgnoreCase("computer_dinghy")) {
+            return this.computer_dinghy;
+        } else {
             return null;
         }
     }
@@ -97,40 +115,64 @@ public class BattleshipModel {
         boolean or;
         overlapResult = false;
         offBoard = false;
+      
         String[] shipName = new String[]{"Computer_AircraftCarrier", "Computer_Battleship", "Computer_Clipper", "Computer_Submarine", "Computer_Dinghy"};
 
-        for(i=0, k=0; i<100; i++){
+        for(i=0, k=0; k<5; i++){
+            overlapResult = false;
+            offBoard = false;
             or = rand.nextBoolean();
             rowInt = rand.nextInt(10) + 1;
             colInt = rand.nextInt(10) + 1;
-            if(or)
-                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
-            else{
+          
+//            System.out.println("I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
+            if(or) { //horizontal
+                System.out.println("2nd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
+                this.getComputerShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
+            } else{ //vertical
+                System.out.println("3rd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
+                this.getComputerShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt + 4 - k, colInt));
+            //if(or)
+            //    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
+            //else{
                 //vertical
-                this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
+            //    this.getShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
             }
+            //this.getComputerShip(shipName[k]).setLocation(new Coordinate(rowInt, colInt), new Coordinate(rowInt, colInt + 4 - k));
 
-            for(j = 0; j < this.getShip(shipName[k]).getShipSquares().size(); j++){
-                if(this.getShip(shipName[k]).getShipSquares().get(j).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
+
+        //    System.out.println("3rd   I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
+            for(j = 0; j < this.getComputerShip(shipName[k]).getShipSquares().size(); j++){
+                if(this.getComputerShip(shipName[k]).getShipSquares().get(j).getAcross() > 10 || this.getComputerShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
+
+       //     for(j = 0; j < this.getShip(shipName[k]).getShipSquares().size(); j++){
+       //         if(this.getShip(shipName[k]).getShipSquares().get(j).getAcross() > 10 || this.getShip(shipName[k]).getShipSquares().get(j).getDown() > 10) {
+  
                     offBoard = true;
                     //"unplace" ship
-                    this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
+                    this.getComputerShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
                     j = 1000;
                 }
                 // if master list already contains one of the new ship's squares, it's an overlap!
-                if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(j))) {
+
+                if (shipSquares.contains(this.getComputerShip(shipName[k]).getShipSquares().get(j))) {
+                //if (shipSquares.contains(this.getShip(shipName[k]).getShipSquares().get(j))) {
+
                     overlapResult = true;
                     //"unplace" ship
-                    this.getShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
+                    this.getComputerShip(shipName[k]).setLocation(new Coordinate(0,0), new Coordinate(0, 0));
                     j = 1000;
                 }
+                System.out.println("J: " + j + " I: " + i + ", rowInt: " + rowInt + ", colInt: " + colInt + ", or: " + or);
             }
             // if no overlap + not off the board, leave the ship alone and add its squares to the master list
             if(!(offBoard || overlapResult)) {
-                shipSquares.addAll(this.getShip(shipName[k]).getShipSquares());
+                System.out.println("k: " + k);
+                this.shipSquares.addAll(this.getComputerShip(shipName[k]).getShipSquares());
                 k++;
             }
         }
+        System.out.println("This is being reached 2");
         return this;
     }
 

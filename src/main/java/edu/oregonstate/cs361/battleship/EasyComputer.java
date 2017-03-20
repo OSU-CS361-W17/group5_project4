@@ -25,7 +25,17 @@
         this.computer_dinghy.setLocation(new Coordinate(5,1), new Coordinate(5,1));
         shipSquares.addAll(this.computer_dinghy.getShipSquares());
         return this;
+    }
+    public BattleshipModel computerPlaceShip() {
+        this.placeShip("aircraftcarrier", "1", "1", "horizontal");
+        this.placeShip("battleship", "3", "7", "vertical");
+        this.placeShip("clipper", "5", "3", "horizontal");
+        this.placeShip("submarine", "8", "2", "vertical");
+        this.placeShip("dinghy", "9", "7", "horizontal");
+        return this;
     }*/
+//}
+    //}*/
 //    public class global {
 //    	public static int x = 1;
 //    	public static int y = 1;
@@ -60,3 +70,4 @@
 //        return this;
 //    }
 //}
+
